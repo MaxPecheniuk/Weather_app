@@ -1,12 +1,29 @@
-.city-list-item {
-  //width: 200px;
-  //height: 200px;
-  //border: 1px solid red;
+.city-list-item__main {
+  margin-top: 30px;
   border-radius: 5px;
-  box-shadow: 0px 4px 20px 5px rgba(146, 146, 146, 0.46);
-
+  box-shadow:
+          0 4px 5px 0 rgba(0,0,0,0.14),
+          0 1px 10px 0 rgba(0,0,0,0.12),
+          0 2px 4px -1px rgba(0,0,0,0.3);
+  position: relative;
+  padding: 5px;
+  background-color: #ffc107 ;
+  color: #0288d1 ;
   &__city-name {
     font-size: 1.2rem;
     text-align: center;
+    padding-top: 10px;
   }
+  &__weather-condition{
+    //display: flex;
+    //align-items: center;
+  }
+  &__current-temp{
+    font-size: 1.2rem;
+    font-weight: bold;
+    position: absolute;
+    top: 40%;
+    right: 7%;
+  }
+
 }
