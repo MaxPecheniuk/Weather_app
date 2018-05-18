@@ -19,20 +19,20 @@ export class Home extends React.Component {
     let cityItem = null;
     if (currentWeatherStore.currentWeather !== undefined) {
       cityItem = currentWeatherStore.currentWeather.map((items: CurrentWeatherTypes, i) => {
-        const weatherIcon = items.weather.map((item) => item.icon);
-        const weatherDescription = items.weather.map((item) => item.description);
+        // const weatherIcon = items.weather.map((item) => item.icon);
+        // const weatherDescription = items.weather.map((item) => item.description);
         return (
           <Link to={'/city/' + items.id} key={i}>
             <CurrentWeatherCityItem
               weatherData={items}
-              weatherIcon={weatherIcon.join('')}
-              weatherDescription={weatherDescription.join('')}
+              // weatherIcon={weatherIcon.join('')}
+              // weatherDescription={weatherDescription.join('')}
             />
           </Link>);
       });
     }
     return (
-      <div className="Home">
+      <div className="home">
         <h1>Weather and forecasts</h1>
         <h3>Select a city to view the weather forecast</h3>
         <CurrentWeatherCitiesList>

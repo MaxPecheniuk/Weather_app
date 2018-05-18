@@ -4,7 +4,7 @@ import { HashRouter as Router } from 'react-router-dom';
 import { Route, Switch } from 'react-router';
 import { DetailedWeather } from './components/detailedWeather/DetailedWeather';
 import { Home } from './components/home/Home';
-// import { CurrentWeatherCitiesList } from './components/citiesList/CurrentWeatherCitiesList';
+import { NotFound } from './components/notFound/NotFound';
 
 class App extends React.Component {
 
@@ -13,8 +13,9 @@ class App extends React.Component {
       <Router>
         <main className="App">
           <Switch>
+            <Route exact={true} path={'/'} render={({...props}) => <Home {...props} />}/>
             <Route path={'/city/:id'} render={({...props}) => <DetailedWeather {...props} />}/>
-            <Route path={'/'} render={({...props}) => <Home {...props} />}/>
+            <Route exact={true} path={'/*'} component={NotFound}/>
           </Switch>
         </main>
       </Router>

@@ -1,11 +1,25 @@
 
 .home{
-  width: 100%;
+  width: 80%;
+  margin: 0 auto;
+  h1{
+    font-size: 2rem;
+    text-align: center;
+    margin: 20px 0;
+  }
+  h3{
+    font-size: 1.5rem;
+    text-align: center;
+    margin: 20px 0;
+
+  }
 }
-.city-list{
+.city-list {
   width: 100%;
   display: flex;
-}
-.city-list-item{
-  border: 1px solid red;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  a{
+    flex: 0 0 15%;
+  }
 }
