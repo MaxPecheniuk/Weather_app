@@ -1,29 +1,70 @@
-.city-list-item__main {
-  margin-top: 30px;
-  border-radius: 5px;
-  box-shadow:
-          0 4px 5px 0 rgba(0,0,0,0.14),
-          0 1px 10px 0 rgba(0,0,0,0.12),
-          0 2px 4px -1px rgba(0,0,0,0.3);
-  position: relative;
-  padding: 5px;
-  background-color: #ffc107 ;
-  color: #0288d1 ;
-  &__city-name {
-    font-size: 1.2rem;
-    text-align: center;
-    padding-top: 10px;
+.city-list-item {
+  &__main {
+    margin: 30px 20px 0 0;
+    border-radius: 5px;
+    box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14),
+    0 1px 10px 0 rgba(0, 0, 0, 0.12),
+    0 2px 4px -1px rgba(0, 0, 0, 0.3);
+    padding: 5px;
+    background-color: #ffca28;
+    color: #01579b;
+    &__weather-data {
+      display: flex;
+      align-items: center;
+      padding-top: 7%;
+      padding-left: 4%;
+    }
+    &__city-name {
+      font-size: 1.5rem;
+      text-align: center;
+      padding-top: 10px;
+    }
+    &__weather-condition {
+      flex: 1 0 60%;
+      &__description {
+        font-size: 1rem;
+        font-weight: bold;
+      }
+    }
+    &__current-temp {
+      font-size: 1.5rem;
+      font-weight: bold;
+      flex: 0 0 25%;
+    }
   }
-  &__weather-condition{
-    //display: flex;
-    //align-items: center;
-  }
-  &__current-temp{
-    font-size: 1.2rem;
-    font-weight: bold;
-    position: absolute;
-    top: 40%;
-    right: 7%;
-  }
+  &__details {
+    background-color: #fafafa;
+    margin: 30px 20px 0 0;
+    border-radius: 5px;
+    box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14),
+    0 1px 10px 0 rgba(0, 0, 0, 0.12),
+    0 2px 4px -1px rgba(0, 0, 0, 0.3);
+    padding: 5px;
 
+    &-item {
+      display: flex;
+      padding: 10px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+      color: #424242;
+      &__text-block {
+        margin-left: 10%;
+        .text-block__name{
+          color: #bdbdbd;
+          font-size: 0.9rem;
+          margin-bottom: 5px;
+        }
+        .text-block__value{
+          font-size: 1.2rem;
+          font-weight: bold;
+        }
+      }
+    }
+    .weather-icon {
+      width: 35px;
+      height: 35px;
+    }
+    :nth-last-child(1) {
+      border: none;
+    }
+  }
 }

@@ -2,10 +2,12 @@
 .home{
   width: 80%;
   margin: 0 auto;
+  color: #01579b;
   h1{
     font-size: 2rem;
     text-align: center;
     margin: 20px 0;
+
   }
   h3{
     font-size: 1.5rem;
@@ -20,6 +22,6 @@
   flex-wrap: wrap;
   justify-content: space-around;
   a{
-    flex: 0 0 15%;
+    flex: 0 0 20%;
   }
 }
