@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 import { apiConfigs } from '../../configs/apiConfigs';
 import { CurrentWeatherTypes } from '../../types/currentWeather.types';
 
@@ -11,6 +12,8 @@ interface CityItemProps {
 export const CurrentWeatherCityItem: React.SFC<CityItemProps> = (props: CityItemProps) => {
   return (
     <div className="city-list-item">
+      <Link to={'/city/' + props.weatherData.id}>
+
       <div className="city-list-item__main">
         <div className="city-list-item__main__city-name">
           {props.weatherData.name}
@@ -31,6 +34,7 @@ export const CurrentWeatherCityItem: React.SFC<CityItemProps> = (props: CityItem
           </div>
         </div>
       </div>
+      </Link>
       <div className="city-list-item__details">
         <div className="city-list-item__details-item">
           <img className="weather-icon" src={require('../../assets/humidity.svg')} alt=""/>

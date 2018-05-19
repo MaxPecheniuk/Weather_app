@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { observer } from 'mobx-react';
-import { Link } from 'react-router-dom';
 import { currentWeatherStore } from '../currentWeather/CurrentWeather.store';
 import { CurrentWeatherTypes } from '../../types/currentWeather.types';
 import { CurrentWeatherCityItem } from '../currentWeather/CurrentWeatherCityItem';
@@ -10,7 +9,6 @@ import './Home.scss';
 
 @observer
 export class Home extends React.Component {
-
   componentDidMount() {
     currentWeatherStore.getData();
   }
@@ -19,16 +17,11 @@ export class Home extends React.Component {
     let cityItem = null;
     if (currentWeatherStore.currentWeather !== undefined) {
       cityItem = currentWeatherStore.currentWeather.map((items: CurrentWeatherTypes, i) => {
-        // const weatherIcon = items.weather.map((item) => item.icon);
-        // const weatherDescription = items.weather.map((item) => item.description);
         return (
-          <Link to={'/city/' + items.id} key={i}>
             <CurrentWeatherCityItem
+              key={i}
               weatherData={items}
-              // weatherIcon={weatherIcon.join('')}
-              // weatherDescription={weatherDescription.join('')}
-            />
-          </Link>);
+            />);
       });
     }
     return (

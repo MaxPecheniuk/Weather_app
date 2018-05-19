@@ -21,7 +21,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  a{
+  &-item{
     flex: 0 0 20%;
   }
 }
