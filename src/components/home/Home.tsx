@@ -6,6 +6,7 @@ import { CurrentWeatherCityItem } from '../currentWeather/CurrentWeatherCityItem
 import { CurrentWeatherCitiesList } from '../currentWeather/CurrentWeatherCitiesList';
 
 import './Home.scss';
+import { InputField } from '../InputField/InputField';
 
 @observer
 export class Home extends React.Component {
@@ -28,6 +29,7 @@ export class Home extends React.Component {
       <div className="home">
         <h1>Weather and forecasts</h1>
         <h3>Select a city to view the weather forecast</h3>
+        <InputField/>
         <CurrentWeatherCitiesList>
           {cityItem}
         </CurrentWeatherCitiesList>
