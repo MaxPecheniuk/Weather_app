@@ -6,12 +6,12 @@ import { CurrentWeatherCityItem } from '../currentWeather/CurrentWeatherCityItem
 import { CurrentWeatherCitiesList } from '../currentWeather/CurrentWeatherCitiesList';
 
 import './Home.scss';
-import { InputField } from '../InputField/InputField';
+import { SearchForm } from '../searchForm/SearchForm';
 
 @observer
 export class Home extends React.Component {
   componentDidMount() {
-    currentWeatherStore.getData();
+    // currentWeatherStore.getData();
   }
 
   render() {
@@ -29,7 +29,7 @@ export class Home extends React.Component {
       <div className="home">
         <h1>Weather and forecasts</h1>
         <h3>Select a city to view the weather forecast</h3>
-        <InputField/>
+        <SearchForm/>
         <CurrentWeatherCitiesList>
           {cityItem}
         </CurrentWeatherCitiesList>
