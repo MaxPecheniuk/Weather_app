@@ -19,10 +19,10 @@ export class Home extends React.Component {
     if (currentWeatherStore.currentWeather !== undefined) {
       cityItem = currentWeatherStore.currentWeather.map((items: CurrentWeatherTypes, i) => {
         return (
-            <CurrentWeatherCityItem
-              key={i}
-              weatherData={items}
-            />);
+          <CurrentWeatherCityItem
+            key={i}
+            weatherData={items}
+          />);
       });
     }
     return (

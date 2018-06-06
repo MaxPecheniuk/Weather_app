@@ -2,12 +2,13 @@ import { BaseProvider } from '../../providers/base.provider';
 import { apiConfigs } from '../../configs/apiConfigs';
 import { DetailedWeatherCityTypes, DetailedWeatherTypes } from '../../types/detailedWeather.types';
 
+// TODO: refactor provider and store (response don`t have list or name)extends Base provider
 export class DetailedWeatherProvider extends BaseProvider {
   fetchDetailedWeather(id: string): Promise<Array<DetailedWeatherTypes>> {
     return this.get<Array<DetailedWeatherTypes>>(`forecast?id=${id}&appid=${apiConfigs.token}&units=metric&cnt=8`);
   }
 }
-
+// TODO: refactor provider and store (response don`t have list or name)extends Base provider
 export class DetailedCityNameProvider {
   fetchDetailedCityName(id: string): Promise<DetailedWeatherCityTypes> {
     return new Promise<DetailedWeatherCityTypes>((resolve, reject) => {
