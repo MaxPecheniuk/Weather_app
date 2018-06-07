@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { apiConfigs } from '../../configs/apiConfigs';
-import { DetailedWeatherTypes } from '../../types/detailedWeather.types';
+import { DetailedWeatherListItem } from '../../types/detailedWeather.types';
 
 interface DetailedWeatherItemProps {
-  weatherData: DetailedWeatherTypes;
+  weatherData: DetailedWeatherListItem;
 }
 
 export const DetailedWeatherItem: React.SFC<DetailedWeatherItemProps> = (props: DetailedWeatherItemProps) => {

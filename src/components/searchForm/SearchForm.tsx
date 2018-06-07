@@ -3,22 +3,22 @@ import { InputField } from '../InputField/InputField';
 import { SyntheticEvent } from 'react';
 import { observer } from 'mobx-react';
 import { action, observable, reaction } from 'mobx';
-// import {  observable, reaction } from 'mobx';
 import { searchFormStore } from './SearchForm.store';
 import { Redirect } from 'react-router';
 
 @observer
 export class SearchForm extends React.Component {
-  @observable
-  test: boolean = false;
 
   @observable
-  private _inputText: string;
+  private _redirect: boolean = false;
+
+  @observable
+  private _inputText: string = '';
 
   submitForm = (event: SyntheticEvent<HTMLFormElement> | React.MouseEvent<HTMLElement>) => {
     event.preventDefault();
     searchFormStore.getData(this._inputText);
-    this.test = true;
+    this._redirect = true;
     reaction(() => searchFormStore.currentCityWeather, (currentCityWeather) => console.log(currentCityWeather.id));
 
   }
@@ -27,7 +27,7 @@ export class SearchForm extends React.Component {
     let item = null;
     if (searchFormStore.currentCityWeather !== undefined) {
       return(  item =
-        this.test && (
+        this._redirect && (
             <Redirect to={'/city/' + searchFormStore.currentCityWeather.id}/>)
 
       );

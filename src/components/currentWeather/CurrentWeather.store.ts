@@ -1,7 +1,7 @@
 import { action, computed, observable } from 'mobx';
 import { CurrentWeatherTypes } from '../../types/currentWeather.types';
 import { currentWeatherProvider } from './CurrnetWeather.provider';
-// import { citiesList } from '../../configs/citiesList';
+import { citiesList } from '../../configs/citiesList';
 
 export class CurrentWeatherStore {
   @observable
@@ -19,8 +19,8 @@ export class CurrentWeatherStore {
   get errorMessage(): string {
     return this._errorMessage;
   }
-  getData(id: string) {
-    // const id = citiesList.join(',');
+  getData() {
+    const id = citiesList.join(',');
     this.fetchWeather(id);
   }
 

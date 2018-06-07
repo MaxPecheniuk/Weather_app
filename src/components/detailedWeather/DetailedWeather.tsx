@@ -3,7 +3,7 @@ import { match } from 'react-router';
 import { observer } from 'mobx-react';
 import { Link } from 'react-router-dom';
 import { detailedWeatherStore } from './DetailedWeather.store';
-import { DetailedWeatherTypes } from '../../types/detailedWeather.types';
+import { DetailedWeatherListItem } from '../../types/detailedWeather.types';
 import { DetailedWeatherItem } from './DetailedWeatherItem';
 import { DetailedWeatherList } from './DetailedWeatherList';
 
@@ -23,9 +23,9 @@ export class DetailedWeather extends React.Component<Props> {
   render() {
     let detailedWeatherListItem = null;
     let cityName = '';
-    if (detailedWeatherStore.cityWeather && detailedWeatherStore.cityName !== undefined) {
-      cityName = detailedWeatherStore.cityName.name;
-      detailedWeatherListItem = detailedWeatherStore.cityWeather.map((items: DetailedWeatherTypes, i) => {
+    if (detailedWeatherStore.cityWeather !== undefined) {
+      cityName = detailedWeatherStore.cityWeather.city.name;
+      detailedWeatherListItem = detailedWeatherStore.cityWeather.list.map((items: DetailedWeatherListItem, i) => {
         return (
           <DetailedWeatherItem
             key={i}

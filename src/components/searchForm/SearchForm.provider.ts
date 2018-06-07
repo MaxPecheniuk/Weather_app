@@ -1,6 +1,5 @@
 import { apiConfigs } from '../../configs/apiConfigs';
 import { BaseProvider } from '../../providers/base.provider';
-// import { CurrentWeatherProvider } from '../currentWeather/CurrnetWeather.provider';
 import { WeatherTypes } from '../../types/currentWeather.types';
 
 export class SearchFormProvider extends BaseProvider {

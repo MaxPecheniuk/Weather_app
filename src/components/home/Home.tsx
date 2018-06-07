@@ -11,7 +11,7 @@ import { SearchForm } from '../searchForm/SearchForm';
 @observer
 export class Home extends React.Component {
   componentDidMount() {
-    // currentWeatherStore.getData();
+    currentWeatherStore.getData();
   }
 
   render() {
