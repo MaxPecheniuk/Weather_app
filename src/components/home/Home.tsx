@@ -1,12 +1,13 @@
 import * as React from 'react';
 import { observer } from 'mobx-react';
 import { currentWeatherStore } from '../currentWeather/CurrentWeather.store';
-import { CurrentWeatherTypes } from '../../types/currentWeather.types';
+// import { WeatherTypes } from '../../types/currentWeather.types';
 import { CurrentWeatherCityItem } from '../currentWeather/CurrentWeatherCityItem';
 import { CurrentWeatherCitiesList } from '../currentWeather/CurrentWeatherCitiesList';
 
 import './Home.scss';
 import { SearchForm } from '../searchForm/SearchForm';
+import { WeatherTypes } from '../../types/currentWeather.types';
 
 @observer
 export class Home extends React.Component {
@@ -17,7 +18,7 @@ export class Home extends React.Component {
   render() {
     let cityItem = null;
     if (currentWeatherStore.currentWeather !== undefined) {
-      cityItem = currentWeatherStore.currentWeather.map((items: CurrentWeatherTypes, i) => {
+      cityItem = currentWeatherStore.currentWeather.list.map((items: WeatherTypes, i) => {
         return (
           <CurrentWeatherCityItem
             key={i}

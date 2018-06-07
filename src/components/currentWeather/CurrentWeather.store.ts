@@ -5,13 +5,13 @@ import { citiesList } from '../../configs/citiesList';
 
 export class CurrentWeatherStore {
   @observable
-  private _currentWeather: Array<CurrentWeatherTypes>;
+  private _currentWeather: CurrentWeatherTypes;
 
   @observable
   private _errorMessage: string;
 
   @computed
-  get currentWeather(): Array<CurrentWeatherTypes> {
+  get currentWeather(): CurrentWeatherTypes {
     return this._currentWeather;
   }
 
@@ -27,7 +27,7 @@ export class CurrentWeatherStore {
   private fetchWeather(id: string): void {
     currentWeatherProvider
       .fetchCurrentWeather(id)
-      .then(action((currentWeather: Array<CurrentWeatherTypes>) => this._currentWeather = currentWeather))
+      .then(action((currentWeather: CurrentWeatherTypes) => this._currentWeather = currentWeather))
       .catch(action((e: XMLHttpRequest) => {
         this._errorMessage = e.statusText;
         throw new Error(e.statusText);

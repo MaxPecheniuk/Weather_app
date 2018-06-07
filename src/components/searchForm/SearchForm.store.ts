@@ -19,7 +19,6 @@ export class SearchFormStore {
     return this._errorMessage;
   }
   getData(id: string) {
-    // const id = citiesList.join(',');
     this.fetchCityWeather(id);
   }
 

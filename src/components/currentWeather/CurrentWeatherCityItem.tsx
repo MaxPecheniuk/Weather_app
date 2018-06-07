@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { apiConfigs } from '../../configs/apiConfigs';
-import { CurrentWeatherTypes } from '../../types/currentWeather.types';
+import { WeatherTypes } from '../../types/currentWeather.types';
 
 import './CurrentWeatherCityItem.scss';
 
 interface CityItemProps {
-  weatherData: CurrentWeatherTypes;
+  weatherData: WeatherTypes;
 }
 
 export const CurrentWeatherCityItem: React.SFC<CityItemProps> = (props: CityItemProps) => {
