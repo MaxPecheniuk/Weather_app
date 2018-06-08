@@ -1,6 +1,7 @@
-export interface CurrentWeatherTypes {
+export interface WeatherListTypes {
   list: Array<WeatherTypes>;
 }
+//CurrentWeatherTypes
 
 export interface WeatherTypes {
   coord: {

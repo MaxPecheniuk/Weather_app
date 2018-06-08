@@ -28,7 +28,7 @@ export class SearchForm extends React.Component {
     if (searchFormStore.currentCityWeather !== undefined) {
       return(  item =
         this._redirect && (
-            <Redirect to={'/city/' + searchFormStore.currentCityWeather.id}/>)
+            <Redirect from={'/'} to={'/city/' + searchFormStore.currentCityWeather.id}/>)
 
       );
     }
