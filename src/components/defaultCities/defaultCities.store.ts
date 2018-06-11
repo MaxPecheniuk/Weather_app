@@ -1,9 +1,9 @@
 import { action, computed, observable } from 'mobx';
 import { WeatherListTypes } from '../../types/currentWeather.types';
-import { currentWeatherProvider } from './CurrnetWeather.provider';
+import { defaultCitiesProvider } from './defaultCities.provider';
 import { citiesList } from '../../configs/citiesList';
 
-export class CurrentWeatherStore {
+export class DefaultCitiesStore {
   @observable
   private _currentWeather: WeatherListTypes;
 
@@ -25,7 +25,7 @@ export class CurrentWeatherStore {
   }
 
   private fetchWeather(id: string): void {
-    currentWeatherProvider
+    defaultCitiesProvider
       .fetchCurrentWeather(id)
       .then(action((currentWeather: WeatherListTypes) => this._currentWeather = currentWeather))
       .catch(action((e: XMLHttpRequest) => {
@@ -35,4 +35,4 @@ export class CurrentWeatherStore {
   }
 }
 
-export const currentWeatherStore = new CurrentWeatherStore();
+export const defaultCitiesStore = new DefaultCitiesStore();

@@ -4,7 +4,7 @@ import { DetailedWeatherTypes } from '../../types/detailedWeather.types';
 
 export class DetailedWeatherProvider extends BaseProvider {
   fetchDetailedWeather(id: string): Promise<DetailedWeatherTypes> {
-    return this.get<DetailedWeatherTypes>(`forecast?id=${id}&appid=${apiConfigs.token}&units=metric&cnt=8`);
+    return this.get<DetailedWeatherTypes>(`forecast?id=${id}&appid=${apiConfigs.token}&units=metric`);
   }
 }
 

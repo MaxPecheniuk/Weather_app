@@ -1,4 +1,17 @@
-export interface DetailedWeatherListItem {
+export interface DetailedWeatherTypes {
+  list: Array<DetailedWeatherItemTypes>;
+  city: {
+    id: number;
+    name: string;
+    coord: {
+      lat: number;
+      lon: number;
+    };
+    country: string;
+  };
+}
+
+export interface DetailedWeatherItemTypes {
   dt: number;
   main: {
     temp: number;
@@ -27,17 +40,4 @@ export interface DetailedWeatherListItem {
     pod: string;
   };
   dt_txt: string;
-}
-
-export interface DetailedWeatherTypes {
-  list: Array<DetailedWeatherListItem>;
-  city: {
-    id: number;
-    name: string;
-    coord: {
-      lat: number;
-      lon: number;
-    };
-    country: string;
-  };
 }
