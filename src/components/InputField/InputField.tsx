@@ -16,8 +16,9 @@ export class InputField extends React.Component<Props> {
 
   render() {
     return (
-      <div>
+      <div className="search-form__form__input-wrapper">
         <input
+          className="search-form__form__input-field"
           type="text"
           value={this.props.value}
           onChange={this.onChange}

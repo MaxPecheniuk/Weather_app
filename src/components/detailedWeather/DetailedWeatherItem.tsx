@@ -12,7 +12,7 @@ interface DetailedWeatherItemProps {
 @observer
 export class DetailedWeatherItem extends React.Component<DetailedWeatherItemProps> {
   @observable
-  private showDetailFlag = true;
+  private showDetailFlag = false;
 
   render() {
     let className = classnames('detailed-forecast');
@@ -22,14 +22,14 @@ export class DetailedWeatherItem extends React.Component<DetailedWeatherItemProp
 
     return (
       <div className="detailed-weather__list-item">
-        <div className="time">
-          {/*{new Date(this.props.weatherData.date).toLocaleDateString(*/}
-            {/*'us', {day: '2-digit', month: '2-digit'})}*/}
-          {this.props.weatherData.date}
+        <div className="detailed-weather__list-item_date">
+          {new Date(this.props.weatherData.date).toLocaleDateString(
+            'us', {day: '2-digit', month: '2-digit'})}
+          {/*{this.props.weatherData.date}*/}
         </div>
-        <div onClick={() => this.showDetailFlag = !this.showDetailFlag}>
-          See More
-        </div>
+        {/*<div onClick={() => this.showDetailFlag = !this.showDetailFlag}>*/}
+          {/*See More*/}
+        {/*</div>*/}
         <div className={className}>
         {this.props.weatherData.weatherData.map((item, i) => {
           return (

@@ -9,6 +9,7 @@ import { DetailedWeatherList } from './DetailedWeatherList';
 
 import './DetailedWeather.scss';
 import { WeatherByDateTypes } from '../../types/weatherByDate.types';
+
 // import { DetailedWeatherItemTypes } from '../../types/detailedWeather.types';
 
 interface Props {
@@ -34,7 +35,7 @@ export class DetailedWeather extends React.Component<Props> {
 
       detailedWeatherStore.cityWeather.list.map((item) => {
         const dateItem = new Date(item.dt * 1000).toLocaleDateString(
-          'ru', {day: '2-digit', month: '2-digit', weekday: 'short'});
+          'ru', {day: '2-digit', month: '2-digit'});
         let hasItem = false;
         weatherByDate.map((value: any) => {
           if (value.date === dateItem) {
@@ -70,7 +71,7 @@ export class DetailedWeather extends React.Component<Props> {
         <DetailedWeatherList>
           {detailedWeatherListItem}
         </DetailedWeatherList>
-        <Link to={'/'}>
+        <Link to={'/home'}>
           <button className="btn">Back to home page</button>
         </Link>
       </div>

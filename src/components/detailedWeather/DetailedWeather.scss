@@ -1,5 +1,6 @@
 .detailed-weather {
-  margin: 20px 0;;
+  margin: 20px 0;
+
   &__city-name {
     padding-top: 10px;
     color: #01579b;
@@ -8,9 +9,10 @@
   }
   &__list {
     width: 100%;
-    display: flex;
+    //display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+
     &-item {
       width: 20%;
       margin: 30px 20px 0 0;
@@ -21,12 +23,9 @@
       padding: 5px;
       background-color: #ffca28;
       color: #01579b;
-      .time {
-        font-size: 1.5rem;
-        text-align: center;
-        padding-top: 10px;
-      }
       .list-item-weather-data {
+        background-color: red;
+
         display: flex;
         align-items: center;
         padding-top: 7%;
