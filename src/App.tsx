@@ -17,7 +17,7 @@ class App extends React.Component {
             {/*<SearchForm/>*/}
             {/*<Route exact={true} path={'/'} render={({...props}) => <SearchForm {...props} />}/>*/}
 
-            <Route exact={true} path={'/home'} render={({...props}) => <Home {...props} />}/>
+            <Route path={'/home'} render={({...props}) => <Home {...props} />}/>
             <Route path={'/city/:id'} render={({...props}) => <DetailedWeather {...props} />}/>
             {/*<Route exact={true} path={'/*'} component={NotFound}/>*/}
             <Redirect to="/home"/>

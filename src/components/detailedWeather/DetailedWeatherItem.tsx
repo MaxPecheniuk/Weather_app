@@ -15,17 +15,15 @@ export class DetailedWeatherItem extends React.Component<DetailedWeatherItemProp
   private showDetailFlag = false;
 
   render() {
-    let className = classnames('detailed-forecast');
+    let className = classnames('list-item__weather-forecast');
     if (this.showDetailFlag) {
       className += ' hide';
     }
 
     return (
       <div className="detailed-weather__list-item">
-        <div className="detailed-weather__list-item_date">
-          {new Date(this.props.weatherData.date).toLocaleDateString(
-            'us', {day: '2-digit', month: '2-digit'})}
-          {/*{this.props.weatherData.date}*/}
+        <div className="list-item__date">
+          {this.props.weatherData.date}
         </div>
         {/*<div onClick={() => this.showDetailFlag = !this.showDetailFlag}>*/}
           {/*See More*/}
@@ -33,18 +31,18 @@ export class DetailedWeatherItem extends React.Component<DetailedWeatherItemProp
         <div className={className}>
         {this.props.weatherData.weatherData.map((item, i) => {
           return (
-            <div key={i} className="city-list-item__main__weather-data ">
-              <div>
+            <div key={i} className="list-item__weather-forecast__weather-data">
+              <div className="list-item__weather-forecast__time">
                 {new Date(item.dt * 1000).toLocaleTimeString(
                   'ru', {hour: 'numeric', minute: 'numeric'})}
               </div>
-              <div className="city-list-item__main__weather-condition">
-                <div className="city-list-item__main__weather-condition__description">
+              <div className="list-item__weather-forecast__weather-condition">
+                <div className="list-item__weather-forecast__weather-condition__description">
                   {item.weather[0].description}
                 </div>
                 <img src={apiConfigs.conditionIconUrl + item.weather[0].icon + '.png'} alt=""/>
               </div>
-              <div className="city-list-item__main__current-temp">
+              <div className="list-item__weather-forecast__current-temp">
                 {Math.round(item.main.temp)}°C
               </div>
             </div>

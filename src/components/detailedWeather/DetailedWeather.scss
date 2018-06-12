@@ -1,6 +1,6 @@
 .detailed-weather {
-  margin: 20px 0;
-
+  margin: 20px auto;
+  width: 80%;
   &__city-name {
     padding-top: 10px;
     color: #01579b;
@@ -9,28 +9,16 @@
   }
   &__list {
     width: 100%;
-    //display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-
     &-item {
-      width: 20%;
       margin: 30px 20px 0 0;
       border-radius: 5px;
       box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14),
       0 1px 10px 0 rgba(0, 0, 0, 0.12),
       0 2px 4px -1px rgba(0, 0, 0, 0.3);
-      padding: 5px;
+      //padding: 5px;
       background-color: #ffca28;
       color: #01579b;
-      .list-item-weather-data {
-        background-color: red;
 
-        display: flex;
-        align-items: center;
-        padding-top: 7%;
-        padding-left: 4%;
-      }
     }
   }
   .btn {
@@ -52,4 +40,20 @@
     display: none;
   }
 
+
+}
+.list-item{
+  &__date{
+    background-color: #e0e0e0;
+    width: 100%;
+    height: 25px;
+    border-radius: 5px 5px 0 0;
+
+  }
+  &__weather-forecast{
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    margin-top: 10px;
+  }
 }

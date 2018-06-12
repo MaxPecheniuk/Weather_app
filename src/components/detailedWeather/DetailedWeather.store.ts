@@ -6,9 +6,6 @@ export class DetailedWeatherStore {
   @observable
   private _cityWeather: DetailedWeatherTypes;
 
-  // @observable
-  // private _cityName: DetailedWeatherCityTypes;
-
   @observable
   private _errorMessage: string;
 
@@ -17,11 +14,6 @@ export class DetailedWeatherStore {
     return this._cityWeather;
   }
 
-  // @computed
-  // get cityName(): DetailedWeatherCityTypes {
-  //   return this._cityName;
-  // }
-
   @computed
   get errorMessage(): string {
     return this._errorMessage;
@@ -29,7 +21,6 @@ export class DetailedWeatherStore {
 
   getData(id: string): void {
     this.fetchWeather(id);
-    // this.fetchDetailedCity(id);
   }
 
   private fetchWeather(id: string): void {
@@ -43,17 +34,6 @@ export class DetailedWeatherStore {
         throw new Error(e.statusText);
       }));
   }
-  // private fetchDetailedCity(id: string): void {
-  //   detailedCityNameProvider
-  //     .fetchDetailedCityName(id)
-  //     .then(action((cityName: DetailedWeatherCityTypes) => {
-  //       this._cityName = cityName;
-  //     }))
-  //     .catch(action((e: XMLHttpRequest) => {
-  //       this._errorMessage = e.statusText;
-  //       throw new Error(e.statusText);
-  //     }));
-  // }
 }
 
 export const detailedWeatherStore = new DetailedWeatherStore();
