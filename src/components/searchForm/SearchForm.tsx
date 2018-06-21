@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { InputField } from '../InputField/InputField';
+import { InputField } from '../inputField/inputField';
 import { SyntheticEvent } from 'react';
 import { observer } from 'mobx-react';
 import { action, observable, reaction } from 'mobx';
@@ -58,11 +58,11 @@ export class SearchForm extends React.Component {
 //
 //
 // import * as React from 'react';
-// import { InputField } from '../InputField/InputField';
+// import { inputField } from '../inputField/inputField';
 // import { SyntheticEvent } from 'react';
 // import { observer } from 'mobx-react';
 // import { action, observable, reaction } from 'mobx';
-// import { searchFormStore } from './SearchForm.store';
+// import { searchFormStore } from './SearchForm.stores';
 // // import { Redirect } from 'react-router';
 // import { History } from 'history';
 //
@@ -100,7 +100,7 @@ export class SearchForm extends React.Component {
 //           className="search-form__form"
 //           onSubmit={this.submitForm}
 //         >
-//           <InputField
+//           <inputField
 //             value={this._inputText}
 //             onChange={action((value: string) => this._inputText = value)}
 //           />

@@ -37,8 +37,14 @@
         &__detailed-list.hide{
           display: none;
         }
+        &__detailed__item{
+          border-right: 1px solid aqua;
+        }
         .detailed-item__weather-data{
           display: flex;
+        }
+        &__weather-data{
+          border-right: 1px solid red;
         }
 
 
