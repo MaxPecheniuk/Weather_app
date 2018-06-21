@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { apiConfigs } from '../../configs/apiConfigs';
 import { WeatherTypes } from '../../types/currentWeather.types';
 
-import './defaultCitiesItem.scss';
+import './DefaultCitiesItem.scss';
 
 interface CityItemProps {
   weatherData: WeatherTypes;

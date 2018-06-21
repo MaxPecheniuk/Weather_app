@@ -3,18 +3,19 @@ import { defaultCitiesConfig } from '../configs/defaultCities.config';
 
 export class SettingsProvider {
   fetchSettings(): Promise<SettingsTypes> {
-    return new Promise(
-      (resolve, reject) => {
-        const xhr = localStorage.getItem('__settingsWeather__');
+    return new Promise((resolve, reject) => {
+        let settings = localStorage.getItem('__settingsOpenWeather__');
+        console.log(settings);
         let data: SettingsTypes | null;
-        if (xhr === null) {
+        if (settings === null) {
           data = defaultCitiesConfig;
         } else {
-          data = JSON.parse(xhr);
+          console.log(settings);
+          data = JSON.parse(settings);
         }
         if (data !== null) {
-          resolve(data);
           console.log(data);
+          resolve(data);
         } else {
           reject('Error get settings');
         }

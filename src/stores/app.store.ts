@@ -24,11 +24,11 @@ export class AppStore {
     return this._errorMessage;
   }
 
-  @computed
-  set deleteCity(id: number) {
+   deleteCity(id: any) {
     if (this._settingList.cities.length === 1) {
       console.log('You can\'t delete the last item');
     } else {
+      // this._settingList.cities.splice( id, 1);
       this._settingList.cities = this._settingList.cities.filter((item) => {
         return item.id !== id;
       });
@@ -36,16 +36,13 @@ export class AppStore {
   }
 
   public getSettingList() {
-
     this.fetchSettings();
-    // console.log(this._settingList);
   }
 
   private fetchSettings() {
       settingsProvider
       .fetchSettings()
       .then(action((settingCity: SettingsTypes) => {
-        console.log(this._settingList);
         this._settingList = settingCity;
       }))
       .catch(action((e: XMLHttpRequest) => {

@@ -1,5 +1,10 @@
 export const defaultCitiesConfig = {
-  cities: [
+  'cities': [
+    {
+      'id': 524901,
+      'name': 'Moscow',
+      'country': 'RUS',
+    },
     {
       'id': 710719,
       'name': 'Chernivtsi',

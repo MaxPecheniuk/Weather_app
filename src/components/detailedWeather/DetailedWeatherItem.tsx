@@ -98,16 +98,17 @@ export class DetailedWeatherItem extends React.Component<DetailedWeatherItemProp
           <div className="list-item__weather-forecast__by-hours">
             {weatherByHours}
           </div>
+          <div
+            onClick={() => this.showDetailFlag = !this.showDetailFlag}
+            className="detailed-forecast-show-btn"
+          >
+            {showDetailButton}
+          </div>
           <div className={className}>
             {detailsWeather}
           </div>
         </div>
-        <div
-          onClick={() => this.showDetailFlag = !this.showDetailFlag}
-          className="detailed-forecast-show-btn"
-        >
-          {showDetailButton}
-        </div>
+
       </div>
     );
   }
