@@ -13,7 +13,7 @@ export const DefaultCitiesItem: React.SFC<CityItemProps> = (props: CityItemProps
   return (
     <div className="city-list-item">
       <Link to={'/city/' + props.weatherData.id}>
-
+    {/* Я бы вынес в отдельные компоненты main и details тогда компонент станет более читаемым*/}
       <div className="city-list-item__main">
         <div className="city-list-item__main__city-name">
           {props.weatherData.name}
