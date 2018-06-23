@@ -1,64 +1,72 @@
 import * as React from 'react';
 import { appStore } from '../../stores/app.store';
-import { reaction } from 'mobx';
-import {  SettingsTypes } from '../../types/settings.types';
 import { observer } from 'mobx-react';
-import { defaultCitiesStore } from '../defaultCities/DefaultCities.store';
-// import { detailedWeatherStore } from '../detailedWeather/DetailedWeather.store';
-// import { defaultCitiesStore } from '../defaultCities/DefaultCities.store';
+import { defaultCitiesStore } from '../defaultCities/defaultCities.store';
+import * as classnames from 'classnames';
+
+import './Settings.scss';
+import { observable } from 'mobx';
 
 @observer
 export class Settings extends React.Component {
+  @observable
+  showSettings: boolean = false;
+
   componentDidMount() {
     appStore.getSettingList();
-
-    reaction(() => appStore.settingCity, (item: SettingsTypes) => console.log(item));
-
   }
 
-  del() {
-    localStorage.setItem('__settingsOpenWeather__', JSON.stringify(appStore.settingCity));
-
-    let a = localStorage.getItem('__settingsOpenWeather__');
-    console.log(a);
-
-    // localStorage.removeItem('__settingsOpenWeather__');
+  updateLocalStorage() {
+    localStorage.setItem('__settingsWeather__', JSON.stringify(appStore.settingCity));
   }
 
-  deleteLocalStorage() {
-    localStorage.removeItem('__settingsOpenWeather__');
+  clearLocalStorage() {
+    localStorage.clear();
   }
 
   render() {
     let cityItem = null;
+    let className = classnames('settings');
     if (appStore.settingCity !== undefined) {
-      console.log(appStore.settingCity);
-      let a = appStore.settingCity;
-      defaultCitiesStore.getData(a);
-
-      cityItem = appStore.settingCity.cities.map((item, i) => {
-
+      defaultCitiesStore.getData(appStore.settingCity);
+      cityItem = appStore.settingCity.cities.map((item, index) => {
         return (
           <div
-            className="item"
-            onClick={() => {
-              this.del();
-              appStore.deleteCity(item.id);
-            }}
-            key={i}
+            className="settings__list__item"
+            onClick={() => appStore.deleteCity = index}
+            key={index}
           >
             {item.name}
           </div>
         );
       });
     }
+    if (this.showSettings) {
+      className += ' show';
+    }
     return (
-      <div className="par">
-        {cityItem}
-        <div onClick={() => this.deleteLocalStorage()}>
-          ffff
+      <div className={className}>
+
+        <div className="settings__wrapper">
+          <img
+            onClick={() => this.showSettings = !this.showSettings}
+            className="settings__menu-btn"
+            src={require('../../assets/menu-button.svg')}
+          />
+          <div className="settings__list">
+            {cityItem}
+            <div onClick={() => this.updateLocalStorage()}>
+              Update list
+            </div>
+            <div
+              onClick={() => this.clearLocalStorage()}
+            >
+              Reset list
+            </div>
+          </div>
         </div>
       </div>
+
     );
   }
 }

@@ -1,5 +1,5 @@
 import { action, computed, observable } from 'mobx';
-import { SettingsItemTypes, SettingsTypes } from '../types/settings.types';
+import { SettingsTypes } from '../types/settings.types';
 import { settingsProvider } from '../providers/settings.provider';
 
 export class AppStore {
@@ -14,24 +14,22 @@ export class AppStore {
     return this._settingList;
   }
 
-  @computed
-  set addCity(item: SettingsItemTypes) {
-    this._settingList.cities.push(item);
-  }
+  // @computed
+  // set addCity(item: SettingsItemTypes) {
+  //   this._settingList.cities.push(item);
+  // }
 
   @computed
   get errorMessage(): string {
     return this._errorMessage;
   }
 
-   deleteCity(id: any) {
+  @computed
+  set deleteCity(id: any) {
     if (this._settingList.cities.length === 1) {
       console.log('You can\'t delete the last item');
     } else {
-      // this._settingList.cities.splice( id, 1);
-      this._settingList.cities = this._settingList.cities.filter((item) => {
-        return item.id !== id;
-      });
+      this._settingList.cities.splice(id, 1);
     }
   }
 
@@ -40,7 +38,7 @@ export class AppStore {
   }
 
   private fetchSettings() {
-      settingsProvider
+    settingsProvider
       .fetchSettings()
       .then(action((settingCity: SettingsTypes) => {
         this._settingList = settingCity;

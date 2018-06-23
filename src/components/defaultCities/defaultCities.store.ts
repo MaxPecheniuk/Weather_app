@@ -1,14 +1,7 @@
 import { action, computed, observable } from 'mobx';
 import { WeatherListTypes } from '../../types/currentWeather.types';
 import { defaultCitiesProvider } from './DefaultCities.provider';
-// import { defaultCitiesConfig } from '../../configs/defaultCities.config';
-// import { SettingsTypes } from '../../types/settings.types';
-
-// import { computed, observable } from 'mobx';
-// import { WeatherListTypes } from '../../types/currentWeather.types';
-// // import { defaultCitiesProvider } from './defaultCities.provider';
-// // import { defaultCitiesConfig } from '../../configs/defaultCities.config';
-// // import { SettingsTypes } from '../../types/settings.types';
+import { SettingsTypes } from '../../types/settings.types';
 
 export class DefaultCitiesStore {
   @observable
@@ -27,21 +20,15 @@ export class DefaultCitiesStore {
     return this._errorMessage;
   }
 
-  getData(t: any) {
-    let id: Array<any> = [];
-    t.cities.map((item: any) => {
+  getData(citiesId: any) {
+    let id: Array<SettingsTypes> = [];
+    citiesId.cities.map((item: any) => {
       id.push(item.id);
-      // return id;
-
     });
-    id.join(',');
-    console.log(id);
-    // const id = defaultCitiesConfig.join(',');
     this.fetchWeather(id);
   }
 
-  private fetchWeather(id: Array<number>): void {
-
+  private fetchWeather(id: Array<SettingsTypes>): void {
     defaultCitiesProvider
       .fetchCurrentWeather(id.join(','))
       .then(action((currentWeather: WeatherListTypes) => this._currentWeather = currentWeather))

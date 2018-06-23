@@ -30,7 +30,6 @@ export class SearchForm extends React.Component {
       return (
         this._redirect && (
           <Redirect to={'/city/' + searchFormStore.currentCityWeather.id}/>)
-
       );
     }
 
@@ -50,68 +49,17 @@ export class SearchForm extends React.Component {
           >
             Search
           </button>
+
         </form>
+        {/*<button*/}
+          {/*onClick={() => {*/}
+            {/*console.log(this._inputText);*/}
+            {/*appStore.addCity(this._inputText);*/}
+          {/*}}*/}
+        {/*>*/}
+          {/*add favorite*/}
+        {/*</button>*/}
       </div>
     );
   }
 }
-//
-//
-// import * as React from 'react';
-// import { inputField } from '../inputField/inputField';
-// import { SyntheticEvent } from 'react';
-// import { observer } from 'mobx-react';
-// import { action, observable, reaction } from 'mobx';
-// import { searchFormStore } from './SearchForm.stores';
-// // import { Redirect } from 'react-router';
-// import { History } from 'history';
-//
-// interface LoginPageComponentProps {
-//   history: History;
-// }
-//
-// import './searchForm.scss';
-//
-// @observer
-// export class SearchForm extends React.Component<LoginPageComponentProps> {
-//
-//   // @observable
-//   // private _redirect: boolean = false;
-//
-//   @observable
-//   private _inputText: string = '';
-//
-//   submitForm = (event: SyntheticEvent<HTMLFormElement> | React.MouseEvent<HTMLElement>) => {
-//     event.preventDefault();
-//     searchFormStore.getData(this._inputText);
-//
-//     reaction(() => searchFormStore.currentCityWeather, (currentCityWeather) => console.log(currentCityWeather.id));
-//
-//   }
-//
-//   render() {
-//     if (searchFormStore.currentCityWeather !== undefined) {
-//       this.props.history.replace('/city/' + searchFormStore.currentCityWeather.id);
-//     }
-//
-//     return (
-//       <div className="search-form-wrapper">
-//         <form
-//           className="search-form__form"
-//           onSubmit={this.submitForm}
-//         >
-//           <inputField
-//             value={this._inputText}
-//             onChange={action((value: string) => this._inputText = value)}
-//           />
-//           <button
-//             className="search-form__form__submit-btn"
-//             onClick={this.submitForm}
-//           >
-//             Search
-//           </button>
-//         </form>
-//       </div>
-//     );
-//   }
-// }

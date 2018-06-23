@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { observer } from 'mobx-react';
-import { defaultCitiesStore } from '../defaultCities/DefaultCities.store';
+import { defaultCitiesStore } from '../defaultCities/defaultCities.store';
 import { DefaultCitiesItem } from '../defaultCities/DefaultCitiesItem';
 import { DefaultCitiesList } from '../defaultCities/DefaultCitiesList';
 
@@ -28,7 +28,8 @@ export class Home extends React.Component {
     }
     return (
       <div className="home">
-        <Settings/>
+          <Settings/>
+
         <h1>Weather and forecasts</h1>
         <h3>Select a city to view the weather forecast</h3>
         <SearchForm/>

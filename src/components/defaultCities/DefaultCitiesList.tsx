@@ -10,6 +10,7 @@ export const DefaultCitiesList: React.SFC<CitiesListProps> = (props: CitiesListP
 
   return (
     <div className="city-list">
+      <h3>You'r favorite list:</h3>
       {children}
     </div>
   );
