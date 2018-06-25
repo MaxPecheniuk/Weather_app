@@ -26,43 +26,59 @@ export class Settings extends React.Component {
 
   render() {
     let cityItem = null;
-    let className = classnames('settings');
+    let appName = <div/>;
+    let classNameBtn = classnames('settings');
+    let classNameItem = classnames('settings__list');
     if (appStore.settingCity !== undefined) {
       defaultCitiesStore.getData(appStore.settingCity);
       cityItem = appStore.settingCity.cities.map((item, index) => {
         return (
           <div
-            className="settings__list__item"
-            onClick={() => appStore.deleteCity = index}
             key={index}
+            className="settings__list__item"
           >
-            {item.name}
+            <div className="settings__list__item__city-name">
+              {item.name}
+            </div>
+            <img
+              className="settings__list__item__delete-item"
+              src={require('../../assets/cross.svg')}
+              onClick={() => appStore.deleteCity = index}
+            />
           </div>
+
         );
       });
     }
     if (this.showSettings) {
-      className += ' show';
+      classNameBtn += ' show';
+      appName = <div className="settings__app-name">Weather and forecast</div>;
+    } else {
+      classNameItem += ' hide';
+
     }
     return (
-      <div className={className}>
-
+      <div className={classNameBtn}>
+        <img
+          onClick={() => this.showSettings = !this.showSettings}
+          className="settings__menu-btn"
+          src={require('../../assets/menu-button.svg')}
+        />
+        {appName}
         <div className="settings__wrapper">
-          <img
-            onClick={() => this.showSettings = !this.showSettings}
-            className="settings__menu-btn"
-            src={require('../../assets/menu-button.svg')}
-          />
-          <div className="settings__list">
+
+          <div className={classNameItem}>
             {cityItem}
-            <div onClick={() => this.updateLocalStorage()}>
-              Update list
-            </div>
-            <div
+            <button
+              onClick={() => this.updateLocalStorage()}
+            >
+              Save
+            </button>
+            <button
               onClick={() => this.clearLocalStorage()}
             >
-              Reset list
-            </div>
+              Reset
+            </button>
           </div>
         </div>
       </div>

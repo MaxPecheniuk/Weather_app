@@ -1,33 +1,89 @@
 .settings{
-  width: 5%;
+  width: 2%;
 
-  height: 100%;
-  transition: .5s ease-in-out;
+  height: 100vh;
+  transition: .3s ease-in-out;
   position: absolute;
   top: 0;
-  left: -115px;
+  left: 0;
+  &__app-name{
+    display: inline-block;
+  }
+
+
   &__wrapper{
     display: flex;
+    margin-top: 20px;
+    flex-direction: column;
+
   }
   &__list{
-    margin-right: 30px;
-    order: 1;
+    border-top: 1px solid grey;
+    padding-top: 10px;
+    &.hide{
+      display: none;
+    }
+    margin-bottom: 30px;
+    button{
+
+      margin-right: 10px;
+      width: 40%;
+      cursor: pointer;
+      transition: .3s ease-out;
+      text-decoration: none;
+      color: #fff;
+      background-color: #26a69a;
+      text-align: center;
+      letter-spacing: .5px;
+      font-size: 14px;
+      outline: 0;
+      border: none;
+      border-radius: 10px;
+      height: 36px;
+      line-height: 36px;
+      padding: 0 16px;
+      text-transform: uppercase;
+      &:hover {
+        background-color: #2bbbad;
+        box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.14),
+        0 1px 7px 0 rgba(0, 0, 0, 0.12),
+        0 3px 1px -1px rgba(0, 0, 0, 0.2);
+      }
+    }
+    &__item{
+      display: flex;
+      margin-bottom: 10px;
+      align-items: center;
+      padding-left: 40px;
+
+      &__city-name{
+        margin-right: 10px;
+      }
+      &__delete-item{
+        width: 10px;
+        height: 10px;
+      }
+    }
   }
   &__menu-btn{
-    order: 2;
-    //display: inline-block;
-    //position: absolute;
-    //top: 0;
-    //right: 0;
+    width: 25px;
+    height: 25px;
+    margin-left: 20px;
+    margin-top: 20px;
+    &:hover{
+      transform: scale(1.1);
+    }
   }
 
 
 }
+.settings.show{
 
-.show{
   left: 0px;
-  width: 30%;
-
-  background-color: rgba(250, 250, 250, 0.71);
+  width: 18%;
+  //background-color: rgba(250, 250, 250, 0.71);
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
   //bacopacity: 0.7;
+  background-color: white;
+
 }
