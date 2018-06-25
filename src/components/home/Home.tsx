@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { observer } from 'mobx-react';
-import { defaultCitiesStore } from '../defaultCities/defaultCities.store';
-import { DefaultCitiesItem } from '../defaultCities/DefaultCitiesItem';
-import { DefaultCitiesList } from '../defaultCities/DefaultCitiesList';
+import { favoriteCitiesStore } from '../defaultCities/FavoriteCities.store';
+import { FavoriteCitiesItem } from '../defaultCities/FavoriteCitiesItem';
+import { FavoriteCitiesList } from '../defaultCities/FavoriteCitiesList';
 
 import './Home.scss';
 import { SearchForm } from '../searchForm/SearchForm';
@@ -12,15 +12,15 @@ import { WeatherTypes } from '../../types/currentWeather.types';
 @observer
 export class Home extends React.Component {
   componentDidMount() {
-    // defaultCitiesStore.getData();
+    // favoriteCitiesStore.getData();
   }
 
   render() {
     let cityItem = null;
-    if (defaultCitiesStore.currentWeather !== undefined) {
-      cityItem = defaultCitiesStore.currentWeather.list.map((items: WeatherTypes, i) => {
+    if (favoriteCitiesStore.currentWeather !== undefined) {
+      cityItem = favoriteCitiesStore.currentWeather.list.map((items: WeatherTypes, i) => {
         return (
-          <DefaultCitiesItem
+          <FavoriteCitiesItem
             key={i}
             weatherData={items}
           />);
@@ -31,11 +31,13 @@ export class Home extends React.Component {
           <Settings/>
 
         <h1>Weather and forecasts</h1>
-        <h3>Select a city to view the weather forecast</h3>
+        {/*<h3>Select a city to view the weather forecast</h3>*/}
         <SearchForm/>
-        <DefaultCitiesList>
+        <h3>You'r favorite list:</h3>
+
+        <FavoriteCitiesList>
           {cityItem}
-        </DefaultCitiesList>
+        </FavoriteCitiesList>
       </div>
     );
   }

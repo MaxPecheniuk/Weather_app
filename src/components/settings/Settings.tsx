@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { appStore } from '../../stores/app.store';
 import { observer } from 'mobx-react';
-import { defaultCitiesStore } from '../defaultCities/defaultCities.store';
+import { favoriteCitiesStore } from '../defaultCities/FavoriteCities.store';
 import * as classnames from 'classnames';
 
 import './Settings.scss';
@@ -16,21 +16,13 @@ export class Settings extends React.Component {
     appStore.getSettingList();
   }
 
-  updateLocalStorage() {
-    localStorage.setItem('__settingsWeather__', JSON.stringify(appStore.settingCity));
-  }
-
-  clearLocalStorage() {
-    localStorage.clear();
-  }
-
   render() {
     let cityItem = null;
     let appName = <div/>;
     let classNameBtn = classnames('settings');
     let classNameItem = classnames('settings__list');
     if (appStore.settingCity !== undefined) {
-      defaultCitiesStore.getData(appStore.settingCity);
+      favoriteCitiesStore.getData(appStore.settingCity);
       cityItem = appStore.settingCity.cities.map((item, index) => {
         return (
           <div
@@ -46,17 +38,17 @@ export class Settings extends React.Component {
               onClick={() => appStore.deleteCity = index}
             />
           </div>
-
         );
       });
     }
+
     if (this.showSettings) {
       classNameBtn += ' show';
       appName = <div className="settings__app-name">Weather and forecast</div>;
     } else {
       classNameItem += ' hide';
-
     }
+
     return (
       <div className={classNameBtn}>
         <img
@@ -69,20 +61,31 @@ export class Settings extends React.Component {
 
           <div className={classNameItem}>
             {cityItem}
-            <button
-              onClick={() => this.updateLocalStorage()}
-            >
-              Save
-            </button>
-            <button
-              onClick={() => this.clearLocalStorage()}
-            >
-              Reset
-            </button>
+            <div className="settings__wrapper__control-btn">
+              <button
+                className="settings__wrapper__control-btn__item"
+                onClick={() => this.updateLocalStorage()}
+              >
+                Save
+              </button>
+              <button
+                className="settings__wrapper__control-btn__item"
+                onClick={() => this.clearLocalStorage()}
+              >
+                Reset
+              </button>
+            </div>
           </div>
         </div>
       </div>
 
     );
+  }
+  private updateLocalStorage() {
+    localStorage.setItem('__settingsWeather__', JSON.stringify(appStore.settingCity));
+  }
+
+  private clearLocalStorage() {
+    localStorage.clear();
   }
 }

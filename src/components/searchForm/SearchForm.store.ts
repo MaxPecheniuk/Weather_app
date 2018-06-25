@@ -18,6 +18,7 @@ export class SearchFormStore {
   get errorMessage(): string {
     return this._errorMessage;
   }
+
   getData(id: string) {
     this.fetchCityWeather(id);
   }

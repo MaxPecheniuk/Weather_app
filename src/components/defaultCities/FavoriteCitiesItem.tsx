@@ -3,17 +3,18 @@ import { Link } from 'react-router-dom';
 import { apiConfigs } from '../../configs/apiConfigs';
 import { WeatherTypes } from '../../types/currentWeather.types';
 
-import './DefaultCitiesItem.scss';
+import './FavoriteCitiesItem.scss';
 
 interface CityItemProps {
   weatherData: WeatherTypes;
 }
 
-export const DefaultCitiesItem: React.SFC<CityItemProps> = (props: CityItemProps) => {
+export const FavoriteCitiesItem: React.SFC<CityItemProps> = (props: CityItemProps) => {
   return (
     <div className="city-list-item">
       <Link to={'/city/' + props.weatherData.id}>
 
+        {/*//TODO: Я бы вынес в отдельные компоненты main и details тогда компонент станет более читаемым*/}
       <div className="city-list-item__main">
         <div className="city-list-item__main__city-name">
           {props.weatherData.name}

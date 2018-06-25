@@ -2,7 +2,7 @@ import * as React from 'react';
 import { InputField } from '../inputField/inputField';
 import { SyntheticEvent } from 'react';
 import { observer } from 'mobx-react';
-import { action, observable, reaction } from 'mobx';
+import { action, observable } from 'mobx';
 import { searchFormStore } from './SearchForm.store';
 import { Redirect } from 'react-router';
 
@@ -21,8 +21,6 @@ export class SearchForm extends React.Component {
     event.preventDefault();
     searchFormStore.getData(this._inputText);
     this._redirect = true;
-    reaction(() => searchFormStore.currentCityWeather, (currentCityWeather) => console.log(currentCityWeather.id));
-
   }
 
   render() {
@@ -51,14 +49,6 @@ export class SearchForm extends React.Component {
           </button>
 
         </form>
-        {/*<button*/}
-          {/*onClick={() => {*/}
-            {/*console.log(this._inputText);*/}
-            {/*appStore.addCity(this._inputText);*/}
-          {/*}}*/}
-        {/*>*/}
-          {/*add favorite*/}
-        {/*</button>*/}
       </div>
     );
   }

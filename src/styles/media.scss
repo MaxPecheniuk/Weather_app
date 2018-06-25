@@ -1,0 +1,20 @@
+@media screen and (max-width: 960px){
+  .settings.show{
+    width: 100%;
+  }
+  .search-form__form__submit-btn{
+    width: 70%;
+    //background-color: red;
+  }
+}
+@media screen and (max-width: 640px){
+
+  .search-form__form__submit-btn{
+    width: 70%;
+  }
+}
+@media screen and (max-width: 390px){
+  .search-form__form__submit-btn{
+    width: 70%;
+  }
+}
