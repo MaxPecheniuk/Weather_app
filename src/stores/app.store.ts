@@ -1,5 +1,5 @@
 import { action, computed, observable } from 'mobx';
-import { SettingsTypes } from '../types/settings.types';
+import { SettingsItemTypes, SettingsTypes } from '../types/settings.types';
 import { settingsProvider } from '../providers/settings.provider';
 
 export class AppStore {
@@ -14,10 +14,10 @@ export class AppStore {
     return this._settingList;
   }
 
-  // @computed
-  // set addCity(item: SettingsItemTypes) {
-  //   this._settingList.cities.push(item);
-  // }
+  @computed
+  set addCity(item: SettingsItemTypes) {
+    this._settingList.cities.push(item);
+  }
 
   @computed
   get errorMessage(): string {

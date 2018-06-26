@@ -81,7 +81,7 @@ export class Settings extends React.Component {
 
     );
   }
-  private updateLocalStorage() {
+  public updateLocalStorage() {
     localStorage.setItem('__settingsWeather__', JSON.stringify(appStore.settingCity));
   }
 
