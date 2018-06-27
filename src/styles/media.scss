@@ -2,19 +2,15 @@
   .settings.show{
     width: 100%;
   }
-  .search-form__form__submit-btn{
-    width: 70%;
-    //background-color: red;
+  .search-form-wrapper {
+    width: 100%;
   }
+
 }
 @media screen and (max-width: 640px){
 
-  .search-form__form__submit-btn{
-    width: 70%;
-  }
+
 }
 @media screen and (max-width: 390px){
-  .search-form__form__submit-btn{
-    width: 70%;
-  }
+
 }

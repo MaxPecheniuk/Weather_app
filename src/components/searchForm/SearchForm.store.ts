@@ -1,6 +1,6 @@
 import { action, computed, observable } from 'mobx';
 import { WeatherTypes } from '../../types/currentWeather.types';
-import { nameProv, searchFormProvider } from './SearchForm.provider';
+import { searchCityNameProvider, searchCityWeatherProvider } from './SearchForm.provider';
 import { SettingsItemTypes } from '../../types/settings.types';
 
 export class SearchFormStore {
@@ -29,20 +29,17 @@ export class SearchFormStore {
   }
 
   getName(id: string) {
-    this.fetchName(id);
+    this.fetchNameCity(id);
   }
 
   getData(id: string) {
     this.fetchCityWeather(id);
   }
 
-  private fetchName(id: string): void {
-    nameProv
+  private fetchNameCity(id: string): void {
+    searchCityNameProvider
       .fetchName(id)
-      .then(action((name: SettingsItemTypes) => {
-        console.log(name);
-        this._favorite = name;
-      }))
+      .then(action((name: SettingsItemTypes) => this._favorite = name))
       .catch(action((e: XMLHttpRequest) => {
         this._errorMessage = e.statusText;
         throw new Error(e.statusText);
@@ -50,7 +47,7 @@ export class SearchFormStore {
   }
 
   private fetchCityWeather(id: string): void {
-    searchFormProvider
+    searchCityWeatherProvider
       .fetchCityWeather(id)
       .then(action((cityWeather: WeatherTypes) => this._cityWeather = cityWeather))
       .catch(action((e: XMLHttpRequest) => {

@@ -58,7 +58,6 @@ export class Settings extends React.Component {
         />
         {appName}
         <div className="settings__wrapper">
-
           <div className={classNameItem}>
             {cityItem}
             <div className="settings__wrapper__control-btn">
