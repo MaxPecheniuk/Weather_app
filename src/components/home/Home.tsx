@@ -8,6 +8,7 @@ import './Home.scss';
 import { SearchForm } from '../searchForm/SearchForm';
 import { Settings } from '../settings/Settings';
 import { WeatherTypes } from '../../types/currentWeather.types';
+import { CurrentCity } from '../currentCity/CurrentCity';
 
 @observer
 export class Home extends React.Component {
@@ -38,6 +39,7 @@ export class Home extends React.Component {
         <FavoriteCitiesList>
           {cityItem}
         </FavoriteCitiesList>
+        <CurrentCity/>
       </div>
     );
   }
