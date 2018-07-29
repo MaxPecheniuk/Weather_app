@@ -11,7 +11,8 @@ export class CurrentCity extends React.Component {
 
   render() {
     if (currentCityStore.geoLocation !== undefined) {
-      console.log(currentCityStore.geoLocation);
+      console.log('ff' + currentCityStore.geoLocation);
+
     }
     return (
       <div>

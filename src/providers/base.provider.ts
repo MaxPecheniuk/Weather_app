@@ -12,6 +12,7 @@ abstract class BaseProvider {
         if (xhr.readyState === 4) {
           if (xhr.status === 200) {
             const response = JSON.parse(xhr.response);
+            console.log(response);
             resolve(response);
           } else {
             reject(xhr);
