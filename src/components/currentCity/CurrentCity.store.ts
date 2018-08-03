@@ -31,42 +31,31 @@ export class CurrentCityStore {
 
   getGeoData() {
     this.getGeoLocation();
-    console.log(this._userGeoLocation);
-    if (this._userGeoLocation !== undefined) {
-      this.getWeatherData(this._userGeoLocation.latitude, this._userGeoLocation.longitude);
-
-    }
-    console.log(this.geoLocation);
   }
 
   getWeatherData(lat: number, lon: number) {
     this.getWeather(lat, lon);
   }
+
   private getGeoLocation() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((data) => {
         this._userGeoLocation = data.coords;
-        console.log(this._userGeoLocation);
-
-        return this._userGeoLocation;
+        console.log('if navigator:' + this._userGeoLocation);
+        this.getWeatherData(this._userGeoLocation.latitude, this._userGeoLocation.longitude);
       });
-      // console.log(data.coords);
-      // return this._userGeoLocation
     }
-    console.log(this.geoLocation);
-
   }
-  private getWeather(lat: number, lon: number) {
-    // if (this._userGeoLocation !== undefined) {
-      currentCityProvider
-        .fetchWeather(lat, lon)
-        .then(action((cityWeather: GeocoordTypes) => this._currentCityWeather = cityWeather))
-        .catch(action((e: XMLHttpRequest) => {
-          this._errorMessage = e.statusText;
-          throw new Error(e.statusText);
-        }));
-    // }
 
+  private getWeather(lat: number, lon: number) {
+    console.log('request');
+    currentCityProvider
+      .fetchWeather(lat, lon)
+      .then(action((cityWeather: GeocoordTypes) => this._currentCityWeather = cityWeather))
+      .catch(action((e: XMLHttpRequest) => {
+        this._errorMessage = e.statusText;
+        throw new Error(e.statusText);
+      }));
   }
 
 }

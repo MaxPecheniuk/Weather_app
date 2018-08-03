@@ -3,46 +3,45 @@ import './CurrentCity.scss';
 import { currentCityStore } from './CurrentCity.store';
 import { observer } from 'mobx-react';
 import { reaction } from 'mobx';
-
-// import { CurrentCityItem } from './CurrentCityItem';
+import { apiConfigs } from '../../configs/apiConfigs';
 
 @observer
 export class CurrentCity extends React.Component {
 
-  componentWillMount() {
-    console.log('up1');
-
-    currentCityStore.getGeoData();
-    console.log(currentCityStore.geoLocation);
-    //
-    // if (currentCityStore.currentCityWeather !== undefined) {
-    //   currentCityStore.getWeatherData(currentCityStore.geoLocation.latitude, currentCityStore.geoLocation.longitude);
-    //
-    // }
-
-    reaction(() => currentCityStore.currentCityWeather, (weather) => console.log(weather));
-
-  }
   componentDidMount() {
-    console.log(currentCityStore.geoLocation);
-
+    currentCityStore.getGeoData();
+    reaction(() => currentCityStore.currentCityWeather, (weather) => console.log(weather));
   }
 
   render() {
-    let city = null;
-    // if (currentCityStore.currentCityWeather === undefined) {
-    //   return (<div> Loading</div>);
-    // }
-    // if (currentCityStore.geoLocation !== undefined) {
-    //   console.log(currentCityStore.geoLocation);
-    //
-    // }
-    // let cityItem = null;
+    const {currentCityWeather} = currentCityStore;
 
+    if (currentCityStore.currentCityWeather === undefined) {
+      return (<div> Loading data ...</div>);
+    }
     return (
-      <div>
-        {city}
-        {/*{currentCityStore.currentCityWeather.name}*/}
+      <div className="current-city_wrapper">
+        <div className="city-list-item__main">
+          <div className="city-list-item__main__city-name">
+            {currentCityWeather.name}
+          </div>
+          <div className="city-list-item__main__weather-data">
+            {currentCityWeather.weather.map((item, i) => {
+              return (
+                <div key={i} className="city-list-item__main__weather-condition">
+                  <div className="city-list-item__main__weather-condition__description">
+                    {item.description}
+                  </div>
+                  <img src={apiConfigs.conditionIconUrl + item.icon + '.png'} alt=""/>
+                </div>
+              );
+            })}
+            <div className="city-list-item__main__current-temp">
+              {Math.round(currentCityWeather.main.temp)}
+            </div>
+          </div>
+        </div>
+
       </div>
     );
   }
