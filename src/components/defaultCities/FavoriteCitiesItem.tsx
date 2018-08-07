@@ -41,14 +41,14 @@ export const FavoriteCitiesItem: React.SFC<CityItemProps> = (props: CityItemProp
           <img className="weather-icon" src={require('../../assets/humidity.svg')} alt=""/>
           <div className="city-list-item__details-item__text-block">
             <div className="text-block__name">Humidity</div>
-            <div className="text-block__value">{props.weatherData.main.humidity}%</div>
+            <div className="text-block__value">{Math.round(props.weatherData.main.humidity)}%</div>
           </div>
         </div>
         <div className="city-list-item__details-item">
           <img className="weather-icon" src={require('../../assets/pressure.svg')} alt=""/>
           <div className="city-list-item__details-item__text-block">
             <div className="text-block__name">Pressure</div>
-            <div className="text-block__value">{props.weatherData.main.pressure} hPa</div>
+            <div className="text-block__value">{Math.round(props.weatherData.main.pressure)} hPa</div>
           </div>
         </div>
         <div className="city-list-item__details-item">
@@ -56,7 +56,7 @@ export const FavoriteCitiesItem: React.SFC<CityItemProps> = (props: CityItemProp
           <div className="city-list-item__details-item__text-block">
             <div className="text-block__name">Wind</div>
             <div className="text-block__value">
-              {props.weatherData.wind.speed} m/s
+              {Math.round(props.weatherData.wind.speed)} m/s
             </div>
           </div>
         </div>

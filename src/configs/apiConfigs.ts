@@ -1,5 +1,5 @@
 export const apiConfigs = {
-  token: '8a80c992c030b57db7932d5f2c1570d6',
+  token: '353cfc9319f492569b42ec5788fac7f1',
   apiUrl: 'https://api.openweathermap.org/data/2.5/',
   conditionIconUrl: 'http://openweathermap.org/img/w/'
 };

@@ -18,6 +18,7 @@ export class Home extends React.Component {
 
   render() {
     let cityItem = null;
+
     if (favoriteCitiesStore.currentWeather !== undefined) {
       cityItem = favoriteCitiesStore.currentWeather.list.map((items: WeatherTypes, i) => {
         return (
@@ -29,17 +30,16 @@ export class Home extends React.Component {
     }
     return (
       <div className="home">
-          <Settings/>
+        <Settings/>
 
         <h1>Weather and forecasts</h1>
         {/*<h3>Select a city to view the weather forecast</h3>*/}
         <SearchForm/>
         <h3>You'r favorite list:</h3>
-
+        <CurrentCity/>
         <FavoriteCitiesList>
           {cityItem}
         </FavoriteCitiesList>
-        <CurrentCity/>
       </div>
     );
   }
