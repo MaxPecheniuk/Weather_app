@@ -1,3 +1,5 @@
+@import '../../styles/variables';
+
 .city-list-item {
   &__main {
     margin: 30px 20px 0 0;
@@ -6,8 +8,8 @@
     0 1px 10px 0 rgba(0, 0, 0, 0.12),
     0 2px 4px -1px rgba(0, 0, 0, 0.3);
     padding: 5px;
-    background-color: #ffca28;
-    color: #01579b;
+    background-color: #fafafa;
+    color: $indigo;
     &__weather-data {
       display: flex;
       align-items: center;
@@ -24,6 +26,7 @@
       &__description {
         font-size: 1rem;
         font-weight: bold;
+        color: #757575;
       }
     }
     &__current-temp {
@@ -31,9 +34,10 @@
       font-weight: bold;
       flex: 0 0 25%;
     }
+
   }
   &__details {
-    background-color: #fafafa;
+    background-color: #3f51b5;
     margin: 30px 20px 0 0;
     border-radius: 5px;
     box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14),

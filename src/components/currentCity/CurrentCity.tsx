@@ -3,7 +3,7 @@ import './CurrentCity.scss';
 import { currentCityStore } from './CurrentCity.store';
 import { observer } from 'mobx-react';
 
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { CurrentCityItemMain } from './CurrentCityItemMain';
 import { CurrentCityItemDetails } from './CurrentCityItemDetails';
 
@@ -22,10 +22,10 @@ export class CurrentCity extends React.Component {
     }
     return (
       <div className="current-city_wrapper">
-        <Link to={'/city/' + currentCityWeather.id}>
+        {/*<Link to={'/city/' + currentCityWeather.id}>*/}
           <CurrentCityItemMain weatherData={currentCityWeather}/>
           <CurrentCityItemDetails weatherData={currentCityWeather}/>
-        </Link>
+        {/*</Link>*/}
       </div>
     );
   }

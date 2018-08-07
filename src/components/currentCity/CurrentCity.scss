@@ -1,6 +1,21 @@
 .current-city_wrapper {
   display: flex;
-  //justify-content: center;
-  flex-wrap: nowrap;
-  flex-direction: row;
+  border: 1px solid red;
+  border-radius: 5px;
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14),
+  0 1px 10px 0 rgba(0, 0, 0, 0.12),
+  0 2px 4px -1px rgba(0, 0, 0, 0.3);
+  //padding: 5px;
+  width: 50%;
+  .city-list-item__main,
+  .city-list-item__details{
+    margin: 0;
+    box-shadow: none;
+    border-radius: 0;
+    width: 50%;
+
+  }
+  .weather-condition_icon{
+    width: 45%;
+  }
 }

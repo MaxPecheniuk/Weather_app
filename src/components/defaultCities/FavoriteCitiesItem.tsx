@@ -26,7 +26,7 @@ export const FavoriteCitiesItem: React.SFC<CityItemProps> = (props: CityItemProp
                 <div className="city-list-item__main__weather-condition__description">
                   {item.description}
                 </div>
-                <img src={apiConfigs.conditionIconUrl + item.icon + '.png'} alt=""/>
+                <img className="weather-condition_icon" src={apiConfigs.conditionIconUrl + item.icon + '.png'} alt=""/>
               </div>
             );
           })}
@@ -38,21 +38,21 @@ export const FavoriteCitiesItem: React.SFC<CityItemProps> = (props: CityItemProp
       </Link>
       <div className="city-list-item__details">
         <div className="city-list-item__details-item">
-          <img className="weather-icon" src={require('../../assets/humidity.svg')} alt=""/>
+          <img className="weather-icon" src={require('../../assets/humidity_white.svg')} alt=""/>
           <div className="city-list-item__details-item__text-block">
             <div className="text-block__name">Humidity</div>
             <div className="text-block__value">{Math.round(props.weatherData.main.humidity)}%</div>
           </div>
         </div>
         <div className="city-list-item__details-item">
-          <img className="weather-icon" src={require('../../assets/pressure.svg')} alt=""/>
+          <img className="weather-icon" src={require('../../assets/pressure_white.svg')} alt=""/>
           <div className="city-list-item__details-item__text-block">
             <div className="text-block__name">Pressure</div>
             <div className="text-block__value">{Math.round(props.weatherData.main.pressure)} hPa</div>
           </div>
         </div>
         <div className="city-list-item__details-item">
-          <img className="weather-icon" src={require('../../assets/wind.svg')} alt=""/>
+          <img className="weather-icon" src={require('../../assets/wind-white.svg')} alt=""/>
           <div className="city-list-item__details-item__text-block">
             <div className="text-block__name">Wind</div>
             <div className="text-block__value">

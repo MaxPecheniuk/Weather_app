@@ -18,7 +18,7 @@ export const CurrentCityItemMain: React.SFC<CurrentCityProps> = (props: CurrentC
                   <div className="city-list-item__main__weather-condition__description">
                     {item.description}
                   </div>
-                  <img src={apiConfigs.conditionIconUrl + item.icon + '.png'} alt=""/>
+                  <img className="weather-condition_icon" src={apiConfigs.conditionIconUrl + item.icon + '.png'} />
                 </div>
               );
             })}
