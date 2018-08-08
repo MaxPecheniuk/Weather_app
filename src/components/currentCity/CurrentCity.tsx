@@ -21,6 +21,7 @@ export class CurrentCity extends React.Component {
       return (<div> Loading data ...</div>);
     }
     return (
+
       <div className="current-city_wrapper">
         {/*<Link to={'/city/' + currentCityWeather.id}>*/}
           <CurrentCityItemMain weatherData={currentCityWeather}/>

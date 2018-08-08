@@ -20,16 +20,15 @@ export const FavoriteCitiesItem: React.SFC<CityItemProps> = (props: CityItemProp
           {props.weatherData.name}
         </div>
         <div className="city-list-item__main__weather-data">
-          {props.weatherData.weather.map((item, i) => {
-            return (
-              <div key={i} className="city-list-item__main__weather-condition">
-                <div className="city-list-item__main__weather-condition__description">
-                  {item.description}
-                </div>
-                <img className="weather-condition_icon" src={apiConfigs.conditionIconUrl + item.icon + '.png'} alt=""/>
-              </div>
-            );
-          })}
+          <div className="city-list-item__main__weather-condition">
+            <div className="city-list-item__main__weather-condition__description">
+              {props.weatherData.weather[0].description}
+            </div>
+            <img
+              className="weather-condition_icon"
+              src={apiConfigs.conditionIconUrl + props.weatherData.weather[0].icon + '.png'}
+            />
+          </div>
           <div className="city-list-item__main__current-temp">
             {Math.round(props.weatherData.main.temp)}°C
           </div>

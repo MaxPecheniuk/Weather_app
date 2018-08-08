@@ -23,7 +23,7 @@ export const CurrentCityItemMain: React.SFC<CurrentCityProps> = (props: CurrentC
               );
             })}
             <div className="city-list-item__main__current-temp">
-              {Math.round(props.weatherData.main.temp)}
+              {Math.round(props.weatherData.main.temp)} °C
             </div>
           </div>
         </div>
