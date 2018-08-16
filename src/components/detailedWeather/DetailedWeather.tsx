@@ -29,7 +29,7 @@ export class DetailedWeather extends React.Component<Props> {
       cityName = detailedWeatherStore.cityWeather.city.name;
       detailedWeatherStore.cityWeather.list.map((item) => {
         const dateItem = new Date(item.dt * 1000).toLocaleDateString(
-          'ru', {day: '2-digit', month: '2-digit', weekday: 'short'});
+          'en-US', {day: 'numeric', month: 'long', weekday: 'long'});
         let hasItem = false;
         weatherByDate.map((value: any) => {
           if (value.date === dateItem) {
