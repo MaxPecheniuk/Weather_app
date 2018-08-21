@@ -1,32 +1,64 @@
-@media screen and (min-width: 1201px){
-
-}
-@media screen and (max-width: 1200px){
-  .detailed-weather__list-item__weather-forecast__detailed-weather{
-    background-color: red;
+@media screen and (min-width: 1201px) {
+  .search-form__form__control-panel__submit-btn {
+    width: auto;
   }
 }
-@media screen and (max-width: 960px){
-  .settings.show{
+
+@media screen and (max-width: 1200px) {
+  .detailed-weather__list-item {
+    &__date {
+      margin-right: 10px;
+    }
+    &__weather-forecast {
+      &__detailed-weather {
+        .list-item__weather-forecast__detailed__item {
+          padding: 0;
+          border: none;
+          margin-right: 5px;
+          .detailed-item__weather-data {
+            &__weather-icon {
+              width: 20px;
+              height: 20px;
+            }
+            &__text-block {
+              margin-left: 5px;
+            }
+          }
+        }
+      }
+    }
+  }
+  .city-list-item__main__current-temp {
+    flex: 1 0 40%;
+    font-size: 1.3rem;
+  }
+  .search-form__form__control-panel__submit-btn {
+    width: auto;
+  }
+}
+
+@media screen and (max-width: 960px) {
+
+  .settings.show {
     width: 100%;
   }
   .search-form-wrapper {
     width: 100%;
   }
-  .detailed-weather__list-item__weather-forecast__detailed-weather{
+  .detailed-weather__list-item__weather-forecast__detailed-weather {
     display: none;
   }
-  .detailed-weather{
-    &__list-item{
+  .detailed-weather {
+    &__list-item {
       display: block;
-      &__date{
+      &__date {
         width: 100%;
       }
-      &__weather-forecast{
+      &__weather-forecast {
         width: 100%;
-        &__by-hours{
+        &__by-hours {
           display: block;
-          .list-item__weather-forecast__weather-data{
+          .list-item__weather-forecast__weather-data {
             width: 100%;
             margin-bottom: 10px;
             border-bottom: 1px solid rgba(0, 0, 0, 0.12);
@@ -35,15 +67,24 @@
         }
       }
     }
-    .btn{
+    .btn {
       width: 100%;
     }
   }
 }
-@media screen and (max-width: 640px){
 
+@media screen and (max-width: 640px) {
 
 }
-@media screen and (max-width: 390px){
 
+@media screen and (max-width: 390px) {
+  .city-list-item__main__current-temp {
+    font-size: 1.3rem;
+  }
+  .city-list-item__main__weather-condition {
+    flex: 1 0 55%;
+  }
+  .search-form__form__control-panel__submit-btn {
+    width: auto;
+  }
 }

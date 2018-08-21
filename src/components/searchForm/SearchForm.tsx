@@ -69,7 +69,10 @@ export class SearchForm extends React.Component {
             </button>
             <button
               className="search-form__form__control-panel__submit-btn"
-              onClick={this.addCity}
+              onClick={() => {
+                this.addCity();
+                this.clearInput();
+              }}
             >
               Add to favorite
             </button>
@@ -77,5 +80,8 @@ export class SearchForm extends React.Component {
         </form>
       </div>
     );
+  }
+  private clearInput() {
+    this._inputText = '';
   }
 }
