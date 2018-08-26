@@ -1,9 +1,9 @@
 import { action, computed, observable } from 'mobx';
 import { WeatherListTypes } from '../../types/currentWeather.types';
-import { defaultCitiesProvider } from './defaultCities.provider';
-import { citiesList } from '../../configs/citiesList';
+import { favoriteCitiesProvider } from './FavoriteCities.provider';
+import { SettingsTypes } from '../../types/settings.types';
 
-export class DefaultCitiesStore {
+export class FavoriteCitiesStore {
   @observable
   private _currentWeather: WeatherListTypes;
 
@@ -19,14 +19,18 @@ export class DefaultCitiesStore {
   get errorMessage(): string {
     return this._errorMessage;
   }
-  getData() {
-    const id = citiesList.join(',');
+
+  getData(citiesId: any) {
+    let id: Array<SettingsTypes> = [];
+    citiesId.cities.map((item: any) => {
+      id.push(item.id);
+    });
     this.fetchWeather(id);
   }
 
-  private fetchWeather(id: string): void {
-    defaultCitiesProvider
-      .fetchCurrentWeather(id)
+  private fetchWeather(id: Array<SettingsTypes>): void {
+    favoriteCitiesProvider
+      .fetchCurrentWeather(id.join(','))
       .then(action((currentWeather: WeatherListTypes) => this._currentWeather = currentWeather))
       .catch(action((e: XMLHttpRequest) => {
         this._errorMessage = e.statusText;
@@ -35,4 +39,4 @@ export class DefaultCitiesStore {
   }
 }
 
-export const defaultCitiesStore = new DefaultCitiesStore();
+export const favoriteCitiesStore = new FavoriteCitiesStore();

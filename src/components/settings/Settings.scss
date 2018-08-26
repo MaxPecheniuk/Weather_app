@@ -1,0 +1,63 @@
+@import "../../styles/variables";
+.settings {
+  width: 2%;
+  height: 100vh;
+  transition: .1s ease-in-out;
+  position: absolute;
+  top: 0;
+  left: 0;
+  &__app-name {
+    display: inline-block;
+    margin-left: 25px;
+    font-size: 1.4rem;
+    vertical-align: bottom;
+  }
+  &__wrapper {
+    display: flex;
+    margin-top: 20px;
+    flex-direction: column;
+    &__control-btn {
+      margin-left: 10px;
+      &__item {
+        @extend %btns;
+      }
+    }
+  }
+  &__list {
+    border-top: 1px solid grey;
+    padding-top: 30px;
+    margin-bottom: 30px;
+    &.hide {
+      display: none;
+    }
+    &__item {
+      display: flex;
+      margin-bottom: 10px;
+      align-items: center;
+      padding-left: 40px;
+      &__city-name {
+        margin-right: 10px;
+      }
+      &__delete-item {
+        width: 10px;
+        height: 10px;
+      }
+    }
+  }
+  &__menu-btn {
+    width: 20px;
+    height: 20px;
+    margin-left: 20px;
+    margin-top: 20px;
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
+
+.settings.show {
+  left: 0;
+  width: 18%;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
+  background-color: white;
+}

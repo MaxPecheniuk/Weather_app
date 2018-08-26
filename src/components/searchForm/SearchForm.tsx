@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { InputField } from '../InputField/InputField';
 import { SyntheticEvent } from 'react';
 import { observer } from 'mobx-react';
-import { action, observable, reaction } from 'mobx';
-import { searchFormStore } from './SearchForm.store';
+import { action, observable } from 'mobx';
 import { Redirect } from 'react-router';
-
+import { appStore } from '../../stores/app.store';
+import { searchFormStore } from './SearchForm.store';
+import { SettingsItemTypes } from '../../types/settings.types';
+import { InputField } from '../inputField/inputField';
 import './searchForm.scss';
 
 @observer
@@ -17,12 +18,18 @@ export class SearchForm extends React.Component {
   @observable
   private _inputText: string = '';
 
-  submitForm = (event: SyntheticEvent<HTMLFormElement> | React.MouseEvent<HTMLElement>) => {
+  submitForm = (event: SyntheticEvent<HTMLFormElement>) => {
     event.preventDefault();
+  }
+
+  searchCityWeather = () => {
     searchFormStore.getData(this._inputText);
     this._redirect = true;
-    reaction(() => searchFormStore.currentCityWeather, (currentCityWeather) => console.log(currentCityWeather.id));
+  }
 
+  addCity = () => {
+    console.log(this._inputText);
+    searchFormStore.getName(this._inputText);
   }
 
   render() {
@@ -30,8 +37,17 @@ export class SearchForm extends React.Component {
       return (
         this._redirect && (
           <Redirect to={'/city/' + searchFormStore.currentCityWeather.id}/>)
-
       );
+    }
+
+    if (searchFormStore.favoriteData !== undefined) {
+      let cityItem: SettingsItemTypes = {
+        name: searchFormStore.favoriteData.name,
+        country: searchFormStore.favoriteData.country,
+        id: searchFormStore.favoriteData.id
+      };
+      appStore.addCity = cityItem;
+      localStorage.setItem('__settingsWeather__', JSON.stringify(appStore.settingCity));
     }
 
     return (
@@ -44,74 +60,28 @@ export class SearchForm extends React.Component {
             value={this._inputText}
             onChange={action((value: string) => this._inputText = value)}
           />
-          <button
-            className="search-form__form__submit-btn"
-            onClick={this.submitForm}
-          >
-            Search
-          </button>
+          <div className="search-form__form__control-panel">
+            <button
+              className="search-form__form__control-panel__submit-btn"
+              onClick={this.searchCityWeather}
+            >
+              Search
+            </button>
+            <button
+              className="search-form__form__control-panel__submit-btn"
+              onClick={() => {
+                this.addCity();
+                this.clearInput();
+              }}
+            >
+              Add to favorite
+            </button>
+          </div>
         </form>
       </div>
     );
   }
+  private clearInput() {
+    this._inputText = '';
+  }
 }
-//
-//
-// import * as React from 'react';
-// import { InputField } from '../InputField/InputField';
-// import { SyntheticEvent } from 'react';
-// import { observer } from 'mobx-react';
-// import { action, observable, reaction } from 'mobx';
-// import { searchFormStore } from './SearchForm.store';
-// // import { Redirect } from 'react-router';
-// import { History } from 'history';
-//
-// interface LoginPageComponentProps {
-//   history: History;
-// }
-//
-// import './searchForm.scss';
-//
-// @observer
-// export class SearchForm extends React.Component<LoginPageComponentProps> {
-//
-//   // @observable
-//   // private _redirect: boolean = false;
-//
-//   @observable
-//   private _inputText: string = '';
-//
-//   submitForm = (event: SyntheticEvent<HTMLFormElement> | React.MouseEvent<HTMLElement>) => {
-//     event.preventDefault();
-//     searchFormStore.getData(this._inputText);
-//
-//     reaction(() => searchFormStore.currentCityWeather, (currentCityWeather) => console.log(currentCityWeather.id));
-//
-//   }
-//
-//   render() {
-//     if (searchFormStore.currentCityWeather !== undefined) {
-//       this.props.history.replace('/city/' + searchFormStore.currentCityWeather.id);
-//     }
-//
-//     return (
-//       <div className="search-form-wrapper">
-//         <form
-//           className="search-form__form"
-//           onSubmit={this.submitForm}
-//         >
-//           <InputField
-//             value={this._inputText}
-//             onChange={action((value: string) => this._inputText = value)}
-//           />
-//           <button
-//             className="search-form__form__submit-btn"
-//             onClick={this.submitForm}
-//           >
-//             Search
-//           </button>
-//         </form>
-//       </div>
-//     );
-//   }
-// }

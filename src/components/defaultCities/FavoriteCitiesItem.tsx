@@ -3,32 +3,32 @@ import { Link } from 'react-router-dom';
 import { apiConfigs } from '../../configs/apiConfigs';
 import { WeatherTypes } from '../../types/currentWeather.types';
 
-import './defaultCitiesItem.scss';
+import './FavoriteCitiesItem.scss';
 
 interface CityItemProps {
   weatherData: WeatherTypes;
 }
 
-export const DefaultCitiesItem: React.SFC<CityItemProps> = (props: CityItemProps) => {
+export const FavoriteCitiesItem: React.SFC<CityItemProps> = (props: CityItemProps) => {
   return (
     <div className="city-list-item">
       <Link to={'/city/' + props.weatherData.id}>
 
+        {/*//TODO: Я бы вынес в отдельные компоненты main и details тогда компонент станет более читаемым*/}
       <div className="city-list-item__main">
         <div className="city-list-item__main__city-name">
           {props.weatherData.name}
         </div>
         <div className="city-list-item__main__weather-data">
-          {props.weatherData.weather.map((item, i) => {
-            return (
-              <div key={i} className="city-list-item__main__weather-condition">
-                <div className="city-list-item__main__weather-condition__description">
-                  {item.description}
-                </div>
-                <img src={apiConfigs.conditionIconUrl + item.icon + '.png'} alt=""/>
-              </div>
-            );
-          })}
+          <div className="city-list-item__main__weather-condition">
+            <div className="city-list-item__main__weather-condition__description">
+              {props.weatherData.weather[0].description}
+            </div>
+            <img
+              className="weather-condition_icon"
+              src={apiConfigs.conditionIconUrl + props.weatherData.weather[0].icon + '.png'}
+            />
+          </div>
           <div className="city-list-item__main__current-temp">
             {Math.round(props.weatherData.main.temp)}°C
           </div>
@@ -37,25 +37,25 @@ export const DefaultCitiesItem: React.SFC<CityItemProps> = (props: CityItemProps
       </Link>
       <div className="city-list-item__details">
         <div className="city-list-item__details-item">
-          <img className="weather-icon" src={require('../../assets/humidity.svg')} alt=""/>
+          <img className="weather-icon" src={require('../../assets/humidity_white.svg')} alt=""/>
           <div className="city-list-item__details-item__text-block">
             <div className="text-block__name">Humidity</div>
-            <div className="text-block__value">{props.weatherData.main.humidity}%</div>
+            <div className="text-block__value">{Math.round(props.weatherData.main.humidity)}%</div>
           </div>
         </div>
         <div className="city-list-item__details-item">
-          <img className="weather-icon" src={require('../../assets/pressure.svg')} alt=""/>
+          <img className="weather-icon" src={require('../../assets/pressure_white.svg')} alt=""/>
           <div className="city-list-item__details-item__text-block">
             <div className="text-block__name">Pressure</div>
-            <div className="text-block__value">{props.weatherData.main.pressure} hPa</div>
+            <div className="text-block__value">{Math.round(props.weatherData.main.pressure)} hPa</div>
           </div>
         </div>
         <div className="city-list-item__details-item">
-          <img className="weather-icon" src={require('../../assets/wind.svg')} alt=""/>
+          <img className="weather-icon" src={require('../../assets/wind-white.svg')} alt=""/>
           <div className="city-list-item__details-item__text-block">
             <div className="text-block__name">Wind</div>
             <div className="text-block__value">
-              {props.weatherData.wind.speed} m/s
+              {Math.round(props.weatherData.wind.speed)} m/s
             </div>
           </div>
         </div>

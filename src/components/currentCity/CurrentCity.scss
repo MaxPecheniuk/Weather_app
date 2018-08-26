@@ -1,0 +1,46 @@
+.current-city_wrapper {
+  margin-top: 20px;
+  display: flex;
+  border-radius: 5px;
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14),
+  0 1px 10px 0 rgba(0, 0, 0, 0.12),
+  0 2px 4px -1px rgba(0, 0, 0, 0.05);
+  //padding: 5px;
+  width: 40%;
+  .city-list-item__main,
+  .city-list-item__details {
+    margin: 0;
+    box-shadow: none;
+    border-radius: 0;
+  }
+  .city-list-item__main{
+    flex: 0 0 60%;
+
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+    &__city-name{
+      text-align: left;
+      padding-left: 15px;
+    }
+    &__weather-condition{
+      margin-top: 10px;
+    }
+    &__current-temp{
+      font-size: 2rem;
+      flex: 1 0 40%;
+    }
+
+  }
+  .city-list-item__details{
+
+    height: 100%;
+    margin: 0;
+    box-shadow: none;
+    flex: 0 0 40%;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+  .weather-condition_icon{
+    width: 30%;
+  }
+}

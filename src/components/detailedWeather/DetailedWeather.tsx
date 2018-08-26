@@ -3,11 +3,11 @@ import { match } from 'react-router';
 import { observer } from 'mobx-react';
 import { Link } from 'react-router-dom';
 import { detailedWeatherStore } from './DetailedWeather.store';
+import { WeatherByDateTypes } from '../../types/weatherByDate.types';
 import { DetailedWeatherItem } from './DetailedWeatherItem';
 import { DetailedWeatherList } from './DetailedWeatherList';
 
 import './DetailedWeather.scss';
-import { WeatherByDateTypes } from '../../types/weatherByDate.types';
 
 interface Props {
   match?: match<{ id: string }>;
@@ -23,16 +23,13 @@ export class DetailedWeather extends React.Component<Props> {
   render() {
     let detailedWeatherListItem = null;
     let cityName: string = '';
-
     let weatherByDate: Array<WeatherByDateTypes> = [];
 
     if (detailedWeatherStore.cityWeather !== undefined) {
-
       cityName = detailedWeatherStore.cityWeather.city.name;
-
       detailedWeatherStore.cityWeather.list.map((item) => {
         const dateItem = new Date(item.dt * 1000).toLocaleDateString(
-          'ru', {day: '2-digit', month: '2-digit', weekday: 'short'});
+          'en-US', {day: 'numeric', month: 'long', weekday: 'long'});
         let hasItem = false;
         weatherByDate.map((value: any) => {
           if (value.date === dateItem) {
@@ -49,12 +46,10 @@ export class DetailedWeather extends React.Component<Props> {
           );
         }
       });
-      console.log(weatherByDate);
       detailedWeatherListItem = weatherByDate.map((items: WeatherByDateTypes, i) => {
         return (
           <DetailedWeatherItem
             key={i}
-            // date={items.date}
             weatherData={items}
           />);
       });
