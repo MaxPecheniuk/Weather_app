@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { observer } from 'mobx-react';
-import { favoriteCitiesStore } from '../defaultCities/FavoriteCities.store';
-import { FavoriteCitiesItem } from '../defaultCities/FavoriteCitiesItem';
-import { FavoriteCitiesList } from '../defaultCities/FavoriteCitiesList';
+import { favoriteCitiesStore } from '../favoriteCities/FavoriteCities.store';
+import { FavoriteCitiesItemMain } from '../favoriteCities/FavoriteCitiesItemMain';
+import { FavoriteCitiesList } from '../favoriteCities/FavoriteCitiesList';
 
 import './Home.scss';
 import { SearchForm } from '../searchForm/SearchForm';
@@ -12,20 +12,17 @@ import { CurrentCity } from '../currentCity/CurrentCity';
 
 @observer
 export class Home extends React.Component {
-  componentDidMount() {
-    // favoriteCitiesStore.getData();
-  }
 
   render() {
-    let cityItem = null;
-
+    let cityItemMain = null;
     if (favoriteCitiesStore.currentWeather !== undefined) {
-      cityItem = favoriteCitiesStore.currentWeather.list.map((items: WeatherTypes, i) => {
+      cityItemMain = favoriteCitiesStore.currentWeather.list.map((items: WeatherTypes, i) => {
         return (
-          <FavoriteCitiesItem
+          <FavoriteCitiesItemMain
             key={i}
             weatherData={items}
-          />);
+          />
+        );
       });
     }
     return (
@@ -41,7 +38,8 @@ export class Home extends React.Component {
 
         <h3>You'r favorite list:</h3>
         <FavoriteCitiesList>
-          {cityItem}
+          {cityItemMain}
+
         </FavoriteCitiesList>
       </div>
     );

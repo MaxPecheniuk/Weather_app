@@ -1,7 +1,7 @@
 import { action, computed, observable } from 'mobx';
 import { GeoLocationTypes } from '../../types/geoLocation.types';
 import { currentCityProvider } from './CurrentCity.provider';
-import { GeocoordTypes } from '../../types/Geocoord.types';
+import { GeoCoordsWeatherTypes } from '../../types/Geocoord.types';
 
 export class CurrentCityStore {
 
@@ -9,13 +9,13 @@ export class CurrentCityStore {
   private _userGeoLocation: GeoLocationTypes;
 
   @observable
-  private _currentCityWeather: GeocoordTypes;
+  private _currentCityWeather: GeoCoordsWeatherTypes;
 
   @observable
   private _errorMessage: string;
 
   @computed
-  get currentCityWeather(): GeocoordTypes {
+  get currentCityWeather(): GeoCoordsWeatherTypes {
     return this._currentCityWeather;
   }
 
@@ -51,7 +51,7 @@ export class CurrentCityStore {
     console.log('request');
     currentCityProvider
       .fetchWeather(lat, lon)
-      .then(action((cityWeather: GeocoordTypes) => this._currentCityWeather = cityWeather))
+      .then(action((cityWeather: GeoCoordsWeatherTypes) => this._currentCityWeather = cityWeather))
       .catch(action((e: XMLHttpRequest) => {
         this._errorMessage = e.statusText;
         throw new Error(e.statusText);

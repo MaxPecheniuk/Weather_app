@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { GeocoordTypes } from '../../types/Geocoord.types';
+import { GeoCoordsWeatherTypes } from '../../types/Geocoord.types';
 
 interface CurrentCityProps {
-  weatherData: GeocoordTypes;
+  weatherData: GeoCoordsWeatherTypes;
 }
 export const CurrentCityItemDetails: React.SFC<CurrentCityProps> = (props: CurrentCityProps ) => {
- return (
+  return (
    <div className="city-list-item__details">
      <div className="city-list-item__details-item">
        <img className="weather-icon" src={require('../../assets/humidity_white.svg')} alt=""/>

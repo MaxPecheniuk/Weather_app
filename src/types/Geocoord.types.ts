@@ -1,4 +1,4 @@
-export interface GeocoordTypes {
+export interface GeoCoordsWeatherTypes {
   coord: {
     lon: number;
     lat: number;

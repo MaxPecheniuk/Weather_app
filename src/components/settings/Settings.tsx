@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { appStore } from '../../stores/app.store';
 import { observer } from 'mobx-react';
-import { favoriteCitiesStore } from '../defaultCities/FavoriteCities.store';
+import { favoriteCitiesStore } from '../favoriteCities/FavoriteCities.store';
 import * as classnames from 'classnames';
 
 import './Settings.scss';

@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { GeocoordTypes } from '../../types/Geocoord.types';
+import { GeoCoordsWeatherTypes } from '../../types/Geocoord.types';
 import { apiConfigs } from '../../configs/apiConfigs';
 
 interface CurrentCityProps {
-  weatherData: GeocoordTypes;
+  weatherData: GeoCoordsWeatherTypes;
 }
 export const CurrentCityItemMain: React.SFC<CurrentCityProps> = (props: CurrentCityProps) => {
       return (
