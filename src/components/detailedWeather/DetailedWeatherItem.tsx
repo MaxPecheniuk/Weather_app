@@ -5,12 +5,12 @@ import * as classnames from 'classnames';
 import { apiConfigs } from '../../configs/apiConfigs';
 import { WeatherByDateTypes } from '../../types/weatherByDate.types';
 
-interface DetailedWeatherItemProps {
+interface IDetailedWeatherItemProps {
   weatherData: WeatherByDateTypes;
 }
 
 @observer
-export class DetailedWeatherItem extends React.Component<DetailedWeatherItemProps> {
+export class DetailedWeatherItem extends React.Component<IDetailedWeatherItemProps> {
 
   @observable
   private showDetailFlag = false;

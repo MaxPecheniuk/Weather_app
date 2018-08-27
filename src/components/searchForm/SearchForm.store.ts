@@ -1,14 +1,11 @@
 import { action, computed, observable } from 'mobx';
-import { WeatherTypes } from '../../types/currentWeather.types';
+import { FavoriteWeatherTypes } from '../../types/currentWeather.types';
 import { searchCityNameProvider, searchCityWeatherProvider } from './SearchForm.provider';
 import { SettingsItemTypes } from '../../types/settings.types';
 
-// на счет прдеикативного ввода нужно при каждом добавлении символа делать запрос на сервер на получение данных, 
-// скорее всего тебе будет прилетать массив, и ты его выводишь в выпадающем оконе 
-// и открывать деталку по городу нуджно только после выбоа из списка городов
 export class SearchFormStore {
   @observable
-  private _cityWeather: WeatherTypes;
+  private _cityWeather: FavoriteWeatherTypes;
 
   @observable
   private _favorite: SettingsItemTypes;
@@ -22,7 +19,7 @@ export class SearchFormStore {
   }
 
   @computed
-  get currentCityWeather(): WeatherTypes {
+  get currentCityWeather(): FavoriteWeatherTypes {
     return this._cityWeather;
   }
 
@@ -52,7 +49,7 @@ export class SearchFormStore {
   private fetchCityWeather(id: string): void {
     searchCityWeatherProvider
       .fetchCityWeather(id)
-      .then(action((cityWeather: WeatherTypes) => this._cityWeather = cityWeather))
+      .then(action((cityWeather: FavoriteWeatherTypes) => this._cityWeather = cityWeather))
       .catch(action((e: XMLHttpRequest) => {
         this._errorMessage = e.statusText;
         throw new Error(e.statusText);

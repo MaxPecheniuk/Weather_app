@@ -2,13 +2,13 @@ import * as React from 'react';
 import { observer } from 'mobx-react';
 import { SyntheticEvent } from 'react';
 
-interface Props {
+interface IInputFieldProps {
   value: string;
   onChange: (inputText: string) => void;
 }
 
 @observer
-export class InputField extends React.Component<Props> {
+export class InputField extends React.Component<IInputFieldProps> {
 
   onChange = (event: SyntheticEvent<HTMLInputElement>) => {
     this.props.onChange(event.currentTarget.value);

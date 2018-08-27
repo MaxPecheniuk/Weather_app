@@ -1,16 +1,16 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { apiConfigs } from '../../configs/apiConfigs';
-import { WeatherTypes } from '../../types/currentWeather.types';
+import { FavoriteWeatherTypes } from '../../types/currentWeather.types';
 
 import './FavoriteCitiesItem.scss';
 import { FavoriteCitiesItemDetails } from './FavoriteCitiesItemDetails';
 
-interface CityItemProps {
-  weatherData: WeatherTypes;
+interface ICityItemProps {
+  weatherData: FavoriteWeatherTypes;
 }
 
-export const FavoriteCitiesItemMain: React.SFC<CityItemProps> = (props: CityItemProps) => {
+export const FavoriteCitiesItemMain: React.SFC<ICityItemProps> = (props: ICityItemProps) => {
   return (
     <div className="city-list-item">
       <Link to={'/city/' + props.weatherData.id}>

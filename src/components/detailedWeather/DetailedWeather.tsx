@@ -9,12 +9,12 @@ import { DetailedWeatherList } from './DetailedWeatherList';
 
 import './DetailedWeather.scss';
 
-interface Props {
+interface IDetailedWeatherProps {
   match?: match<{ id: string }>;
 }
 
 @observer
-export class DetailedWeather extends React.Component<Props> {
+export class DetailedWeather extends React.Component<IDetailedWeatherProps> {
   componentDidMount() {
     const id = this.props.match!.params.id;
     detailedWeatherStore.getData(id);

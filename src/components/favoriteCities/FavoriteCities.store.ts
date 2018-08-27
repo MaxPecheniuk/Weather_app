@@ -1,17 +1,17 @@
 import { action, computed, observable } from 'mobx';
-import { WeatherListTypes } from '../../types/currentWeather.types';
+import { FavoriteWeatherListTypes } from '../../types/currentWeather.types';
 import { favoriteCitiesProvider } from './FavoriteCities.provider';
 import { SettingsTypes } from '../../types/settings.types';
 
 export class FavoriteCitiesStore {
   @observable
-  private _currentWeather: WeatherListTypes;
+  private _currentWeather: FavoriteWeatherListTypes;
 
   @observable
   private _errorMessage: string;
 
   @computed
-  get currentWeather(): WeatherListTypes {
+  get currentWeather(): FavoriteWeatherListTypes {
     return this._currentWeather;
   }
 
@@ -31,7 +31,7 @@ export class FavoriteCitiesStore {
   private fetchWeather(id: Array<SettingsTypes>): void {
     favoriteCitiesProvider
       .fetchCurrentWeather(id.join(','))
-      .then(action((currentWeather: WeatherListTypes) => this._currentWeather = currentWeather))
+      .then(action((currentWeather: FavoriteWeatherListTypes) => this._currentWeather = currentWeather))
       .catch(action((e: XMLHttpRequest) => {
         this._errorMessage = e.statusText;
         throw new Error(e.statusText);

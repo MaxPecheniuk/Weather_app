@@ -1,8 +1,8 @@
-export interface WeatherListTypes {
-  list: Array<WeatherTypes>;
+export interface FavoriteWeatherListTypes {
+  list: Array<FavoriteWeatherTypes>;
 }
 
-export interface WeatherTypes {
+export interface FavoriteWeatherTypes {
   coord: {
     lon: number;
     lat: number;

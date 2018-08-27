@@ -1,11 +1,11 @@
 import { apiConfigs } from '../../configs/apiConfigs';
 import { BaseProvider } from '../../providers/base.provider';
-import { WeatherTypes } from '../../types/currentWeather.types';
+import { FavoriteWeatherTypes } from '../../types/currentWeather.types';
 import { SettingsItemTypes } from '../../types/settings.types';
 
 export class SearchCityWeatherProvider extends BaseProvider {
-  fetchCityWeather(id: string): Promise<WeatherTypes> {
-    return this.get<WeatherTypes>(`weather?q=${id}&appid=${apiConfigs.token}&units=metric`);
+  fetchCityWeather(id: string): Promise<FavoriteWeatherTypes> {
+    return this.get<FavoriteWeatherTypes>(`weather?q=${id}&appid=${apiConfigs.token}&units=metric`);
   }
 }
 

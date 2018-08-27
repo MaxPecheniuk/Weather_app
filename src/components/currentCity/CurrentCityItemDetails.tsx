@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { GeoCoordsWeatherTypes } from '../../types/Geocoord.types';
 
-interface CurrentCityProps {
+interface ICurrentCityProps {
   weatherData: GeoCoordsWeatherTypes;
 }
-export const CurrentCityItemDetails: React.SFC<CurrentCityProps> = (props: CurrentCityProps ) => {
+export const CurrentCityItemDetails: React.SFC<ICurrentCityProps> = (props: ICurrentCityProps ) => {
   return (
    <div className="city-list-item__details">
      <div className="city-list-item__details-item">

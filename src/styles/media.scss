@@ -2,6 +2,12 @@
   .search-form__form__control-panel__submit-btn {
     width: auto;
   }
+  .page-not-found{
+    .btn{
+      width: 100%;
+      height: auto;
+    }
+  }
 }
 
 @media screen and (max-width: 1200px) {
@@ -34,6 +40,12 @@
   }
   .search-form__form__control-panel__submit-btn {
     width: auto;
+  }
+  .page-not-found{
+    .btn{
+      width: 100%;
+      height: auto;
+    }
   }
 }
 
@@ -69,6 +81,12 @@
     }
     .btn {
       width: 100%;
+    }
+  }
+  .page-not-found{
+    .btn{
+      width: 100%;
+      height: auto;
     }
   }
 }

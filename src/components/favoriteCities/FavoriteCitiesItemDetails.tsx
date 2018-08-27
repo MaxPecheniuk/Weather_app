@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { WeatherTypes } from '../../types/currentWeather.types';
+import { FavoriteWeatherTypes } from '../../types/currentWeather.types';
 
-interface CityItemProps {
-  weatherData: WeatherTypes;
+interface ICityItemProps {
+  weatherData: FavoriteWeatherTypes;
 }
 
-export const FavoriteCitiesItemDetails: React.SFC<CityItemProps> = (props: CityItemProps) => {
+export const FavoriteCitiesItemDetails: React.SFC<ICityItemProps> = (props: ICityItemProps) => {
   return (
     <div className="city-list-item__details">
       <div className="city-list-item__details-item">

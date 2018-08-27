@@ -38,7 +38,12 @@ export class SearchForm extends React.Component {
         this._redirect && (
           <Redirect to={'/city/' + searchFormStore.currentCityWeather.id}/>)
       );
-    }
+    } else {
+      if (searchFormStore.errorMessage) {
+        return(this._redirect && (
+          <Redirect to={'/NotFound/'}/>));
+      }
+      }
 
     if (searchFormStore.favoriteData !== undefined) {
       let cityItem: SettingsItemTypes = {
