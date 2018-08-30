@@ -16,6 +16,9 @@ class App extends React.Component {
             <Route exact={true} path={'/'} render={({...props}) => <Home {...props} />}/>
             <Route path={'/city/:id'} render={({...props}) => <DetailedWeather {...props} />}/>
             <Route exact={true} path={'/*'} component={NotFound}/>
+
+            {/*<Redirect to="/"/>*/}
+
           </Switch>
         </main>
       </Router>

@@ -1,3 +1,5 @@
+@import '../../styles/variables';
+
 .city-list-item {
   &__main {
     margin: 30px 20px 0 0;
@@ -6,24 +8,27 @@
     0 1px 10px 0 rgba(0, 0, 0, 0.12),
     0 2px 4px -1px rgba(0, 0, 0, 0.3);
     padding: 5px;
-    background-color: #ffca28;
-    color: #01579b;
+    background-color: #fafafa;
+    color: $indigo;
     &__weather-data {
       display: flex;
       align-items: center;
       padding-top: 7%;
       padding-left: 4%;
+      margin-top: 20px;
     }
     &__city-name {
       font-size: 1.5rem;
       text-align: center;
       padding-top: 10px;
+      font-weight: bold;
     }
     &__weather-condition {
       flex: 1 0 60%;
       &__description {
         font-size: 1rem;
         font-weight: bold;
+        color: #757575;
       }
     }
     &__current-temp {
@@ -31,10 +36,11 @@
       font-weight: bold;
       flex: 0 0 25%;
     }
+
   }
   &__details {
-    background-color: #fafafa;
-    margin: 30px 20px 0 0;
+    background-color: #3f51b5;
+    margin: 10px 20px 0 0;
     border-radius: 5px;
     box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14),
     0 1px 10px 0 rgba(0, 0, 0, 0.12),
@@ -49,12 +55,14 @@
       &__text-block {
         margin-left: 10%;
         .text-block__name{
-          color: #bdbdbd;
+          color: #ffffff;
           font-size: 0.9rem;
           margin-bottom: 5px;
         }
         .text-block__value{
           font-size: 1.2rem;
+          color: #ffffff;
+
           font-weight: bold;
         }
       }

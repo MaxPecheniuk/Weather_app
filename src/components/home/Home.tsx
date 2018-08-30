@@ -1,36 +1,46 @@
 import * as React from 'react';
 import { observer } from 'mobx-react';
-import { currentWeatherStore } from '../currentWeather/CurrentWeather.store';
-import { CurrentWeatherTypes } from '../../types/currentWeather.types';
-import { CurrentWeatherCityItem } from '../currentWeather/CurrentWeatherCityItem';
-import { CurrentWeatherCitiesList } from '../currentWeather/CurrentWeatherCitiesList';
+import { favoriteCitiesStore } from '../favoriteCities/FavoriteCities.store';
+import { FavoriteCitiesItemMain } from '../favoriteCities/FavoriteCitiesItemMain';
+import { FavoriteCitiesList } from '../favoriteCities/FavoriteCitiesList';
 
 import './Home.scss';
+import { SearchForm } from '../searchForm/SearchForm';
+import { Settings } from '../settings/Settings';
+import { FavoriteWeatherTypes } from '../../types/currentWeather.types';
+import { CurrentCity } from '../currentCity/CurrentCity';
 
 @observer
 export class Home extends React.Component {
-  componentDidMount() {
-    currentWeatherStore.getData();
-  }
 
   render() {
-    let cityItem = null;
-    if (currentWeatherStore.currentWeather !== undefined) {
-      cityItem = currentWeatherStore.currentWeather.map((items: CurrentWeatherTypes, i) => {
+    let cityItemMain = null;
+    if (favoriteCitiesStore.currentWeather !== undefined) {
+      cityItemMain = favoriteCitiesStore.currentWeather.list.map((items: FavoriteWeatherTypes, i) => {
         return (
-            <CurrentWeatherCityItem
-              key={i}
-              weatherData={items}
-            />);
+          <FavoriteCitiesItemMain
+            key={i}
+            weatherData={items}
+          />
+        );
       });
     }
     return (
       <div className="home">
+        <Settings/>
+
         <h1>Weather and forecasts</h1>
-        <h3>Select a city to view the weather forecast</h3>
-        <CurrentWeatherCitiesList>
-          {cityItem}
-        </CurrentWeatherCitiesList>
+        {/*<h3>Select a city to view the weather forecast</h3>*/}
+        <SearchForm/>
+        <h3>Weather in our city:</h3>
+
+        <CurrentCity/>
+
+        <h3>You'r favorite list:</h3>
+        <FavoriteCitiesList>
+          {cityItemMain}
+
+        </FavoriteCitiesList>
       </div>
     );
   }
