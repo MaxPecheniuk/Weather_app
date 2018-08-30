@@ -30,7 +30,7 @@ export class Home extends React.Component {
         <Settings/>
 
         <h1>Weather and forecasts</h1>
-        {/*<h3>Select a city to view the weather forecast</h3>*/}
+
         <SearchForm/>
         <h3>Weather in our city:</h3>
 

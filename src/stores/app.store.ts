@@ -17,6 +17,8 @@ export class AppStore {
   @computed
   set addCity(item: SettingsItemTypes) {
     this._settingList.cities.push(item);
+    localStorage.setItem('__settingsWeather__', JSON.stringify(this.settingCity));
+
   }
 
   @computed

@@ -20,6 +20,7 @@ class App extends React.Component {
             {/*<Redirect to="/"/>*/}
 
           </Switch>
+          <a href="https://github.com/MaxPecheniuk/Weather_app">GitHub</a>
         </main>
       </Router>
     );

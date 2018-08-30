@@ -25,25 +25,26 @@ export class SearchForm extends React.Component {
   searchCityWeather = () => {
     searchFormStore.getData(this._inputText);
     this._redirect = true;
+
   }
 
   addCity = () => {
-    console.log(this._inputText);
     searchFormStore.getName(this._inputText);
   }
 
   render() {
     if (searchFormStore.currentCityWeather !== undefined) {
-      return (
-        this._redirect && (
-          <Redirect to={'/city/' + searchFormStore.currentCityWeather.id}/>)
-      );
-    } else {
+      if (this._redirect) {
+        return (<Redirect push={true} to={'/city/' + searchFormStore.currentCityWeather.id}/>)
+        ;
+      }
+      } else {
       if (searchFormStore.errorMessage) {
-        return(this._redirect && (
-          <Redirect to={'/NotFound/'}/>));
+        if (this._redirect) {
+          return (<Redirect push={true} to={'/NotFound/'}/>);
+        }
       }
-      }
+    }
 
     if (searchFormStore.favoriteData !== undefined) {
       let cityItem: SettingsItemTypes = {
@@ -52,7 +53,6 @@ export class SearchForm extends React.Component {
         id: searchFormStore.favoriteData.id
       };
       appStore.addCity = cityItem;
-      localStorage.setItem('__settingsWeather__', JSON.stringify(appStore.settingCity));
     }
 
     return (
@@ -86,6 +86,7 @@ export class SearchForm extends React.Component {
       </div>
     );
   }
+
   private clearInput() {
     this._inputText = '';
   }
