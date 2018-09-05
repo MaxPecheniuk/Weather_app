@@ -1,4 +1,6 @@
-[DEMO](https://maxpecheniuk.github.io/Weather_app/#/)
+Demo version of this app.(https://maxpecheniuk.github.io/Weather_app/#/)
+
+-------------------------------------------------------------------------------------------------
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
