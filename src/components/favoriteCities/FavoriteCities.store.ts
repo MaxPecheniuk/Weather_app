@@ -25,7 +25,9 @@ export class FavoriteCitiesStore {
     citiesId.cities.map((item: any) => {
       id.push(item.id);
     });
-    this.fetchWeather(id);
+    if (id.length > 0) {
+      this.fetchWeather(id);
+    }
   }
 
   private fetchWeather(id: Array<SettingsTypes>): void {

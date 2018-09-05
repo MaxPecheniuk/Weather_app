@@ -23,13 +23,17 @@ export class SearchForm extends React.Component {
   }
 
   searchCityWeather = () => {
-    searchFormStore.getData(this._inputText);
-    this._redirect = true;
-
+    if (this._inputText.length > 0 && this._inputText !== ' ') {
+      searchFormStore.getData(this._inputText);
+      this._redirect = true;
+    }
   }
 
   addCity = () => {
-    searchFormStore.getName(this._inputText);
+    if (this._inputText.length > 0 && this._inputText !== ' ') {
+      searchFormStore.getName(this._inputText);
+      this._redirect = true;
+    }
   }
 
   render() {

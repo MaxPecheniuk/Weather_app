@@ -12,14 +12,15 @@ import { CurrentCity } from '../currentCity/CurrentCity';
 
 @observer
 export class Home extends React.Component {
-
   render() {
     let cityItemMain = null;
+
     if (favoriteCitiesStore.currentWeather !== undefined) {
       cityItemMain = favoriteCitiesStore.currentWeather.list.map((items: FavoriteWeatherTypes, i) => {
         return (
           <FavoriteCitiesItemMain
             key={i}
+            keys={i}
             weatherData={items}
           />
         );
@@ -28,19 +29,15 @@ export class Home extends React.Component {
     return (
       <div className="home">
         <Settings/>
-
         <h1>Weather and forecasts</h1>
-
         <SearchForm/>
         <h3>Weather in our city:</h3>
-
         <CurrentCity/>
-
         <h3>You'r favorite list:</h3>
         <FavoriteCitiesList>
           {cityItemMain}
-
         </FavoriteCitiesList>
+
       </div>
     );
   }

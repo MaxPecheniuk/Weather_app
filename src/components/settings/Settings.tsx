@@ -18,10 +18,11 @@ export class Settings extends React.Component {
 
   render() {
     let cityItem = null;
-    let appName = <div/>;
+    // let appName = <div/>;
     let classNameBtn = classnames('settings');
-    let classNameItem = classnames('settings__list');
+    let classNameItem = classnames('settings__menu-btn');
     if (appStore.settingCity !== undefined) {
+
       favoriteCitiesStore.getData(appStore.settingCity);
       cityItem = appStore.settingCity.cities.map((item, index) => {
         return (
@@ -44,29 +45,30 @@ export class Settings extends React.Component {
 
     if (this.showSettings) {
       classNameBtn += ' show';
-      appName = <div className="settings__app-name">Weather and forecast</div>;
-    } else {
-      classNameItem += ' hide';
+      classNameItem += ' show';
     }
 
     return (
       <div className={classNameBtn}>
+
         <img
           onClick={() => this.showSettings = !this.showSettings}
-          className="settings__menu-btn"
+          className={classNameItem}
           src={require('../../assets/menu-button.svg')}
         />
-        {appName}
+        {/*{appName}*/}
+        <div className="settings__app-name">Weather and forecast</div>
+
         <div className="settings__wrapper">
-          <div className={classNameItem}>
+          <div className="settings__list">
             {cityItem}
             <div className="settings__wrapper__control-btn">
-              <button
-                className="settings__wrapper__control-btn__item"
-                onClick={() => this.updateLocalStorage()}
-              >
-                Save
-              </button>
+              {/*<button*/}
+                {/*className="settings__wrapper__control-btn__item"*/}
+                {/*onClick={() => this.updateLocalStorage()}*/}
+              {/*>*/}
+                {/*Save*/}
+              {/*</button>*/}
               <button
                 className="settings__wrapper__control-btn__item"
                 onClick={() => this.clearLocalStorage()}

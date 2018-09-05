@@ -20,6 +20,7 @@ export class InputField extends React.Component<IInputFieldProps> {
         <input
           className="search-form__form__input-field"
           type="text"
+          placeholder="Enter city name"
           value={this.props.value}
           onChange={this.onChange}
         />

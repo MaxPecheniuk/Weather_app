@@ -15,6 +15,7 @@ interface IDetailedWeatherProps {
 
 @observer
 export class DetailedWeather extends React.Component<IDetailedWeatherProps> {
+
   componentDidMount() {
     const id = this.props.match!.params.id;
     detailedWeatherStore.getData(id);

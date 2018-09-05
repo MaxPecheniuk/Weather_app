@@ -1,6 +1,7 @@
 import { action, computed, observable } from 'mobx';
 import { SettingsItemTypes, SettingsTypes } from '../types/settings.types';
 import { settingsProvider } from '../providers/settings.provider';
+import { Settings } from '../components/settings/Settings';
 
 export class AppStore {
   @observable
@@ -17,8 +18,7 @@ export class AppStore {
   @computed
   set addCity(item: SettingsItemTypes) {
     this._settingList.cities.push(item);
-    localStorage.setItem('__settingsWeather__', JSON.stringify(this.settingCity));
-
+    Settings.prototype.updateLocalStorage();
   }
 
   @computed
@@ -29,9 +29,10 @@ export class AppStore {
   @computed
   set deleteCity(id: any) {
     if (this._settingList.cities.length === 1) {
-      console.log('You can\'t delete the last item');
+      alert('You can\'t delete the last item');
     } else {
       this._settingList.cities.splice(id, 1);
+      Settings.prototype.updateLocalStorage();
     }
   }
 
