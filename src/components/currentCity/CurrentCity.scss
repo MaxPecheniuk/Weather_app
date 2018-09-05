@@ -1,5 +1,6 @@
 .current-city {
-  display: inline-block;
+  display: block;
+  margin: 0 auto;
   width: 40%;
   &_wrapper {
     margin-top: 20px;
@@ -19,7 +20,7 @@
       border-bottom-left-radius: 5px;
       border-top-left-radius: 5px;
       &__city-name {
-        text-align: left;
+        //text-align: left;
         padding-left: 15px;
       }
       &__weather-condition {

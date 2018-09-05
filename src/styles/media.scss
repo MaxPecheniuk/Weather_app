@@ -1,111 +1,76 @@
-@media screen and (min-width: 1201px) {
-  .search-form__form__control-panel__submit-btn {
-    width: auto;
-  }
-  .page-not-found{
-    .btn{
-      width: 100%;
+@media screen and (max-width: 768px) {
+  .page-not-found {
+    .btn {
+      width: 50%;
       height: auto;
     }
   }
-}
-
-@media screen and (max-width: 1200px) {
-  .detailed-weather__list-item {
-    &__date {
-      margin-right: 10px;
+  .search-form {
+    &-wrapper {
+      width: 100%;
     }
-    &__weather-forecast {
-      &__detailed-weather {
-        .list-item__weather-forecast__detailed__item {
-          padding: 0;
-          border: none;
-          margin-right: 5px;
-          .detailed-item__weather-data {
-            &__weather-icon {
-              width: 20px;
-              height: 20px;
-            }
-            &__text-block {
-              margin-left: 5px;
-            }
+    &__form__control-panel__submit-btn {
+      width: auto;
+      line-height: normal;
+    }
+  }
+  .current-city {
+    margin: 0 auto;
+    display: block;
+    width: 90%;
+    &_wrapper {
+      display: block;
+    }
+    .city-list {
+      flex-direction: column;
+      align-items: center;
+      &-item {
+        width: 90%;
+        &__main {
+          border-bottom-left-radius: 0px !important;
+          border-top-right-radius: 5px !important;
+          &__weather-condition {
+            flex: 1 0 70%;
           }
+          &__current-temp {
+            font-size: 1.6rem;
+          }
+        }
+        &__details {
+          border-top-right-radius: 0px !important;
+          border-bottom-left-radius: 5px !important;
         }
       }
     }
   }
-  .city-list-item__main__current-temp {
-    flex: 1 0 40%;
-    font-size: 1.3rem;
-  }
-  .search-form__form__control-panel__submit-btn {
-    width: auto;
-  }
-  .page-not-found{
-    .btn{
-      width: 100%;
-      height: auto;
-    }
-  }
-}
-
-@media screen and (max-width: 960px) {
-
-  .current-city{
-    width: 100%;
-    &_wrapper{
-      display: block;
-    }
-    .city-list-item__main__current-temp {
-      font-size: 1.6rem;
-    }
-  }
-  .city-list-item__main__current-temp {
-    font-size: 1.3rem;
-  }
-  .city-list-item__main__weather-condition {
-    flex: 1 0 55%;
-  }
-  .search-form__form__control-panel__submit-btn {
-    width: auto;
-  }
-  .settings{
-    width: 100%;
-  }
   .city-list {
     flex-direction: column;
     align-items: center;
-
-    &-item{
-      width: 90%;
-      &__main{
-        margin: 15px 0;
+    width: 90%;
+    margin: 0 auto;
+    &-item {
+      flex: none;
+      width: 100%;
+      &__main {
+        margin: 30px 0;
       }
-      &__details{
-        display: none;
-
+      &__details {
+        margin: 10px 0;
       }
     }
-
-  }
-  .github-link{
-    position: static;
-  }
-  .search-form-wrapper {
-
-    width: 100%;
-  }
-  .detailed-weather__list-item__weather-forecast__detailed-weather {
-    display: none;
   }
   .detailed-weather {
     &__list-item {
       display: block;
       &__date {
         width: 100%;
+        padding: 10px;
       }
       &__weather-forecast {
         width: 100%;
+        &__detailed-weather {
+          display: none;
+        }
         &__by-hours {
           display: block;
           .list-item__weather-forecast__weather-data {
@@ -113,6 +78,10 @@
             margin-bottom: 10px;
             border-bottom: 1px solid rgba(0, 0, 0, 0.12);
             padding: 20px;
+            &:nth-last-child(1) {
+              border: 0;
+              margin: 0;
+            }
           }
         }
       }
@@ -121,61 +90,152 @@
       width: 100%;
     }
   }
-  .page-not-found{
-    .btn{
-      width: 100%;
-      height: auto;
-    }
-  }
-}
-/*
-
-@media screen and (max-width: 640px) {
-  .settings{
-    width: auto;
-  }
-  .current-city{
+  .settings {
     width: 100%;
-    .city-list-item__main__current-temp {
-      font-size: 1.6rem;
-    }
   }
-  .city-list {
-    flex-direction: column;
-    align-items: center;
-
-    &-item{
-      width: 90%;
-      &__main{
-        margin: 15px 0;
-      }
-      &__details{
-        margin: 10px 0;
-
-      }
-    }
-
-  }
-  .github-link{
+  .github-link {
     position: static;
   }
 }
 
-@media screen and (max-width: 390px) {
-
-}*/
-@media screen and (max-width: 575px) {
-
-}
-@media screen and (min-width: 576px) and (max-width: 768px) {
-
-}
 @media screen and (min-width: 769px) and (max-width: 992px) {
-
+  .settings {
+    width: 100%;
+  }
+  .search-form {
+    &-wrapper {
+      width: 100%;
+    }
+    &__form__control-panel__submit-btn {
+      width: auto;
+      line-height: normal;
+    }
+  }
+  .current-city {
+    margin: 0 auto;
+    display: block;
+    width: 90%;
+    .city-list {
+      &-item {
+        width: 90%;
+        &__main {
+          border-top-right-radius: 5px !important;
+          border-bottom-left-radius: 5px !important;
+          &__weather-condition {
+            flex: 1 0 70%;
+          }
+          &__current-temp {
+            font-size: 1.6rem;
+          }
+        }
+        &__details {
+          border-top-right-radius: 0px !important;
+        }
+      }
+    }
+  }
+  .detailed-weather {
+    width: 90%;
+    &__list-item {
+      &__date {
+        width: 15%;
+      }
+      &__weather-forecast {
+        margin-left: 1%;
+        width: 84%;
+        &__detailed-weather {
+          display: none;
+        }
+      }
+    }
+  }
+  .city-list {
+    justify-content: center;
+    &-item {
+      flex: 0 0 40%;
+    }
+  }
+  .github-link {
+    position: static;
+  }
+  .page-not-found {
+    .btn {
+      width: 50%;
+    }
+  }
 }
+
 @media screen and (min-width: 993px) and (max-width: 1200px) {
-
+  .settings {
+    width: 30%;
+  }
+  .search-form {
+    &-wrapper {
+      width: 100%;
+    }
+    &__form__control-panel__submit-btn {
+      width: auto;
+      line-height: normal;
+    }
+  }
+  .current-city {
+    margin: 0 auto;
+    display: block;
+    width: 80%;
+    .city-list {
+      &-item {
+        width: 90%;
+        &__main {
+          border-top-right-radius: 5px !important;
+          border-bottom-left-radius: 5px !important;
+          &__weather-condition {
+            flex: 1 0 70%;
+          }
+          &__current-temp {
+            font-size: 1.6rem;
+          }
+        }
+        &__details {
+          border-top-right-radius: 0px !important;
+        }
+      }
+    }
+  }
+  .detailed-weather {
+    width: 90%;
+    &__list-item {
+      &__date {
+        width: 15%;
+      }
+      &__weather-forecast {
+        margin-left: 1%;
+        width: 84%;
+      }
+    }
+    .list-item__weather-forecast__detailed__item {
+      padding: 0;
+    }
+  }
+  .city-list {
+    justify-content: center;
+    &-item {
+      flex: 0 0 40%;
+    }
+  }
+  .github-link {
+    position: static;
+  }
+  .page-not-found {
+    .btn {
+      width: 50%;
+    }
+  }
 }
-@media screen and (min-width: 1201px) {
+@media screen and (min-width: 1201px) and (max-width: 1366px) {
+  .page-not-found {
+    .btn {
+      width: 50%;
 
+    }
+  }
 }
