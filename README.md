@@ -1,4 +1,4 @@
-Demo version of this app.(https://maxpecheniuk.github.io/Weather_app/#/)
+[Demo version of this app.](https://maxpecheniuk.github.io/Weather_app/#/)
 
 -------------------------------------------------------------------------------------------------
 
