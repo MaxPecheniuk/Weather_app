@@ -17,8 +17,17 @@ class App extends React.Component {
             <Route path={'/city/:id'} render={({...props}) => <DetailedWeather {...props} />}/>
             <Route exact={true} path={'/*'} component={NotFound}/>
           </Switch>
+          <div className="github-link">
+
+            <a href={'https://github.com/MaxPecheniuk/Weather_app'}>
+              <img className="github-link__img" src={require('./assets/github.png')} alt=""/>
+              <span>GitHub</span>
+            </a>
+          </div>
         </main>
+
       </Router>
+
     );
   }
 }

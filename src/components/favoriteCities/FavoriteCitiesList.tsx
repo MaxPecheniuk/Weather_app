@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { ReactNode } from 'react';
 
-interface CitiesListProps {
+interface ICitiesListProps {
   children: ReactNode;
 }
 
-export const CurrentWeatherCitiesList: React.SFC<CitiesListProps> = (props: CitiesListProps) => {
+export const FavoriteCitiesList: React.SFC<ICitiesListProps> = (props: ICitiesListProps) => {
   const children = React.Children.map(props.children, (child) =>  child);
 
   return (
