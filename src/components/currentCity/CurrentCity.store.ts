@@ -29,11 +29,11 @@ export class CurrentCityStore {
     return this._errorMessage;
   }
 
-  getGeoData() {
+  public getGeoData() {
     this.getGeoLocation();
   }
 
-  getWeatherData(lat: number, lon: number) {
+  public getWeatherData(lat: number, lon: number) {
     this.getWeather(lat, lon);
   }
 
@@ -41,14 +41,12 @@ export class CurrentCityStore {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((data) => {
         this._userGeoLocation = data.coords;
-        // console.log('if navigator:' + this._userGeoLocation);
         this.getWeatherData(this._userGeoLocation.latitude, this._userGeoLocation.longitude);
       });
     }
   }
 
   private getWeather(lat: number, lon: number) {
-    // console.log('request');
     currentCityProvider
       .fetchWeather(lat, lon)
       .then(action((cityWeather: GeoCoordsWeatherTypes) => this._currentCityWeather = cityWeather))
@@ -57,7 +55,6 @@ export class CurrentCityStore {
         throw new Error(e.statusText);
       }));
   }
-
 }
 
 export const currentCityStore = new CurrentCityStore();

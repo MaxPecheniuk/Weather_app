@@ -6,7 +6,6 @@ import { detailedWeatherStore } from './DetailedWeather.store';
 import { WeatherByDateTypes } from '../../types/weatherByDate.types';
 import { DetailedWeatherItem } from './DetailedWeatherItem';
 import { DetailedWeatherList } from './DetailedWeatherList';
-
 import './DetailedWeather.scss';
 
 interface IDetailedWeatherProps {
@@ -32,7 +31,7 @@ export class DetailedWeather extends React.Component<IDetailedWeatherProps> {
         const dateItem = new Date(item.dt * 1000).toLocaleDateString(
           'en-US', {day: 'numeric', month: 'long', weekday: 'long'});
         let hasItem = false;
-        weatherByDate.map((value: any) => {
+        weatherByDate.map((value: WeatherByDateTypes) => {
           if (value.date === dateItem) {
             value.weatherData.push(item);
             hasItem = true;

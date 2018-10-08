@@ -1,15 +1,14 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
+import { settingsStore } from '../settings/Settings.store';
 import { apiConfigs } from '../../configs/apiConfigs';
 import { FavoriteWeatherTypes } from '../../types/currentWeather.types';
-
-import './FavoriteCitiesItem.scss';
 import { FavoriteCitiesItemDetails } from './FavoriteCitiesItemDetails';
-import { appStore } from '../../stores/app.store';
+import './FavoriteCitiesItem.scss';
 
 interface ICityItemProps {
   weatherData: FavoriteWeatherTypes;
-  keys: number;
+  index: number;
 }
 
 export const FavoriteCitiesItemMain: React.SFC<ICityItemProps> = (props: ICityItemProps) => {
@@ -20,8 +19,7 @@ export const FavoriteCitiesItemMain: React.SFC<ICityItemProps> = (props: ICityIt
           className="city-list-item__main__delete-item"
           src={require('../../assets/cross.svg')}
           onClick={() => {
-            console.log('ggg');
-            appStore.deleteCity = props.keys;
+            settingsStore.deleteCity = props.index;
           }}
         />
         <Link to={'/city/' + props.weatherData.id}>

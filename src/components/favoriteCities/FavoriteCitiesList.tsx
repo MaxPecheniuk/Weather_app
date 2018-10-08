@@ -6,7 +6,7 @@ interface ICitiesListProps {
 }
 
 export const FavoriteCitiesList: React.SFC<ICitiesListProps> = (props: ICitiesListProps) => {
-  const children = React.Children.map(props.children, (child) =>  child);
+  const children = React.Children.map(props.children, (child) => child);
 
   return (
     <div className="city-list">

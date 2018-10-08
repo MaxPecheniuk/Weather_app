@@ -4,18 +4,19 @@ import { searchCityNameProvider, searchCityWeatherProvider } from './SearchForm.
 import { SettingsItemTypes } from '../../types/settings.types';
 
 export class SearchFormStore {
+
   @observable
   private _cityWeather: FavoriteWeatherTypes;
 
   @observable
-  private _favorite: SettingsItemTypes;
+  private _favoriteList: SettingsItemTypes;
 
   @observable
   private _errorMessage: string;
 
   @computed
-  get favoriteData(): SettingsItemTypes {
-    return this._favorite;
+  get favoriteList(): SettingsItemTypes {
+    return this._favoriteList;
   }
 
   @computed
@@ -28,18 +29,18 @@ export class SearchFormStore {
     return this._errorMessage;
   }
 
-  getName(id: string) {
+  public getName(id: string) {
     this.fetchNameCity(id);
   }
 
-  getData(id: string) {
+  public getData(id: string) {
     this.fetchCityWeather(id);
   }
 
   private fetchNameCity(id: string): void {
     searchCityNameProvider
       .fetchName(id)
-      .then(action((name: SettingsItemTypes) => this._favorite = name))
+      .then(action((name: SettingsItemTypes) => this._favoriteList = name))
       .catch(action((e: XMLHttpRequest) => {
         this._errorMessage = e.statusText;
         throw new Error(e.statusText);

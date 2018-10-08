@@ -3,6 +3,7 @@ import { DetailedWeatherTypes } from '../../types/detailedWeather.types';
 import { detailedWeatherProvider } from './DetailedWeather.provider';
 
 export class DetailedWeatherStore {
+
   @observable
   private _cityWeather: DetailedWeatherTypes;
 
@@ -19,7 +20,7 @@ export class DetailedWeatherStore {
     return this._errorMessage;
   }
 
-  getData(id: string): void {
+  public getData(id: string): void {
     this.fetchWeather(id);
   }
 

@@ -4,6 +4,8 @@ import { SyntheticEvent } from 'react';
 
 interface IInputFieldProps {
   value: string;
+  classNames: string;
+  placeholder: string;
   onChange: (inputText: string) => void;
 }
 
@@ -16,15 +18,13 @@ export class InputField extends React.Component<IInputFieldProps> {
 
   render() {
     return (
-      <div className="search-form__form__input-wrapper">
-        <input
-          className="search-form__form__input-field"
-          type="text"
-          placeholder="Enter city name"
-          value={this.props.value}
-          onChange={this.onChange}
-        />
-      </div>
+      <input
+        className={`search-form__form__input-field${this.props.classNames}`}
+        type="text"
+        placeholder={this.props.placeholder}
+        value={this.props.value}
+        onChange={this.onChange}
+      />
     );
   }
 }

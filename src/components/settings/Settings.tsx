@@ -1,30 +1,23 @@
 import * as React from 'react';
-import { appStore } from '../../stores/app.store';
 import { observer } from 'mobx-react';
-import { favoriteCitiesStore } from '../favoriteCities/FavoriteCities.store';
-import * as classnames from 'classnames';
-
-import './Settings.scss';
 import { observable } from 'mobx';
+import * as classnames from 'classnames';
+import { settingsStore } from './Settings.store';
+import { favoriteCitiesStore } from '../favoriteCities/FavoriteCities.store';
+import './Settings.scss';
 
 @observer
 export class Settings extends React.Component {
-  @observable
-  showSettings: boolean = false;
 
-  componentDidMount() {
-    appStore.getSettingList();
-  }
+  @observable
+  private _showSettingsToggle: boolean = false;
 
   render() {
     let cityItem = null;
-    // let appName = <div/>;
-    let classNameBtn = classnames('settings');
-    let classNameItem = classnames('settings__menu-btn');
-    if (appStore.settingCity !== undefined) {
-
-      favoriteCitiesStore.getData(appStore.settingCity);
-      cityItem = appStore.settingCity.cities.map((item, index) => {
+    let toggleClassName = classnames('');
+    if (settingsStore.settingsList !== undefined) {
+      favoriteCitiesStore.getData(settingsStore.settingsList);
+      cityItem = settingsStore.settingsList.map((item, index) => {
         return (
           <div
             key={index}
@@ -36,39 +29,30 @@ export class Settings extends React.Component {
             <img
               className="settings__list__item__delete-item"
               src={require('../../assets/cross.svg')}
-              onClick={() => appStore.deleteCity = index}
+              onClick={() => settingsStore.deleteCity = index}
             />
           </div>
         );
       });
     }
 
-    if (this.showSettings) {
-      classNameBtn += ' show';
-      classNameItem += ' show';
+    if (this._showSettingsToggle) {
+      toggleClassName = ' show';
     }
 
     return (
-      <div className={classNameBtn}>
-
+      <div className={`settings${toggleClassName}`}>
         <img
-          onClick={() => this.showSettings = !this.showSettings}
-          className={classNameItem}
+          onClick={() => this._showSettingsToggle = !this._showSettingsToggle}
+          className={`settings__menu-btn${toggleClassName}`}
           src={require('../../assets/menu-button.svg')}
         />
-        {/*{appName}*/}
         <div className="settings__app-name">Weather and forecast</div>
 
         <div className="settings__wrapper">
           <div className="settings__list">
             {cityItem}
             <div className="settings__wrapper__control-btn">
-              {/*<button*/}
-                {/*className="settings__wrapper__control-btn__item"*/}
-                {/*onClick={() => this.updateLocalStorage()}*/}
-              {/*>*/}
-                {/*Save*/}
-              {/*</button>*/}
               <button
                 className="settings__wrapper__control-btn__item"
                 onClick={() => this.clearLocalStorage()}
@@ -83,7 +67,7 @@ export class Settings extends React.Component {
     );
   }
   public updateLocalStorage() {
-    localStorage.setItem('__settingsWeather__', JSON.stringify(appStore.settingCity));
+    localStorage.setItem('__settingsWeather__', JSON.stringify(settingsStore.settingsList));
   }
 
   private clearLocalStorage() {

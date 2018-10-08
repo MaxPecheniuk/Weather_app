@@ -17,7 +17,6 @@ export class DetailedWeatherItem extends React.Component<IDetailedWeatherItemPro
 
   render() {
     let className = classnames('detailed-weather__list-item__weather-forecast__detailed-weather');
-
     const weatherByHours = this.props.weatherData.weatherData.map((item, i) => {
       return (
         <div key={i} className="list-item__weather-forecast__weather-data">
@@ -99,7 +98,6 @@ export class DetailedWeatherItem extends React.Component<IDetailedWeatherItemPro
           >
             {weatherByHours}
           </div>
-
           <div className={className}>
             {detailsWeather}
           </div>

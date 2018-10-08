@@ -1,9 +1,10 @@
 import { action, computed, observable } from 'mobx';
 import { FavoriteWeatherListTypes } from '../../types/currentWeather.types';
 import { favoriteCitiesProvider } from './FavoriteCities.provider';
-import { SettingsTypes } from '../../types/settings.types';
+import { SettingsItemTypes } from '../../types/settings.types';
 
 export class FavoriteCitiesStore {
+
   @observable
   private _currentWeather: FavoriteWeatherListTypes;
 
@@ -20,19 +21,19 @@ export class FavoriteCitiesStore {
     return this._errorMessage;
   }
 
-  getData(citiesId: any) {
-    let id: Array<SettingsTypes> = [];
-    citiesId.cities.map((item: any) => {
-      id.push(item.id);
+  public getData(citiesList: Array<SettingsItemTypes>) {
+    let citiesId: Array<number> = [];
+    citiesList.map((item: SettingsItemTypes) => {
+      citiesId.push(item.id);
     });
-    if (id.length > 0) {
-      this.fetchWeather(id);
+    if (citiesId.length > 0) {
+      this.fetchWeather(citiesId);
     }
   }
 
-  private fetchWeather(id: Array<SettingsTypes>): void {
+  private fetchWeather(citiesId: Array<number>): void {
     favoriteCitiesProvider
-      .fetchCurrentWeather(id.join(','))
+      .fetchCurrentWeather(citiesId.join(','))
       .then(action((currentWeather: FavoriteWeatherListTypes) => this._currentWeather = currentWeather))
       .catch(action((e: XMLHttpRequest) => {
         this._errorMessage = e.statusText;

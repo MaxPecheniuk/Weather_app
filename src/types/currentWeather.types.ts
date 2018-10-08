@@ -1,4 +1,5 @@
 export interface FavoriteWeatherListTypes {
+  cnt: number;
   list: Array<FavoriteWeatherTypes>;
 }
 

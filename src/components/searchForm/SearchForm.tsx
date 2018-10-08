@@ -1,62 +1,84 @@
 import * as React from 'react';
 import { SyntheticEvent } from 'react';
 import { observer } from 'mobx-react';
-import { action, observable } from 'mobx';
+import { action, observable, reaction } from 'mobx';
 import { Redirect } from 'react-router';
-import { appStore } from '../../stores/app.store';
+import * as classnames from 'classnames';
+import { settingsStore } from '../settings/Settings.store';
 import { searchFormStore } from './SearchForm.store';
 import { SettingsItemTypes } from '../../types/settings.types';
 import { InputField } from '../inputField/inputField';
+
 import './searchForm.scss';
 
 @observer
 export class SearchForm extends React.Component {
 
   @observable
+  private _inputTextValue: string = '';
+
+  @observable
   private _redirect: boolean = false;
 
   @observable
-  private _inputText: string = '';
+  private _className: string = classnames('');
+
+  @observable
+  private _placeholder: string = 'Enter city name';
 
   submitForm = (event: SyntheticEvent<HTMLFormElement>) => {
     event.preventDefault();
   }
 
   searchCityWeather = () => {
-    if (this._inputText.length > 0 && this._inputText !== ' ') {
-      searchFormStore.getData(this._inputText);
+    if (this._inputTextValue.length > 0 && this._inputTextValue !== ' ') {
+      searchFormStore.getData(this._inputTextValue);
       this._redirect = true;
     }
   }
 
-  addCity = () => {
-    if (this._inputText.length > 0 && this._inputText !== ' ') {
-      searchFormStore.getName(this._inputText);
+  addCityToFavorite = () => {
+    if (this._inputTextValue.length > 0 && this._inputTextValue !== ' ') {
+      searchFormStore.getName(this._inputTextValue);
       this._redirect = true;
     }
+
+    reaction(() => searchFormStore.favoriteList, (item: SettingsItemTypes) => {
+      if (settingsStore.settingsList.find((obj) => obj.id === searchFormStore.favoriteList.id)) {
+        this._className = (' incorrect');
+        this._placeholder = 'The city is already in favorite list';
+      } else {
+        item = {
+          id: item.id,
+          name: item.name,
+          sys: {
+            country: item.sys.country,
+          },
+        };
+        settingsStore.addCity = item;
+      }
+
+    });
   }
 
   render() {
+    reaction(() => this._inputTextValue.length, (length) => {
+      if (length > 0) {
+        this._className = '';
+        this._placeholder = 'Enter city name';
+      }
+    });
+
     if (searchFormStore.currentCityWeather !== undefined) {
       if (this._redirect) {
-        return (<Redirect push={true} to={'/city/' + searchFormStore.currentCityWeather.id}/>)
-        ;
+        return <Redirect push={true} to={'/city/' + searchFormStore.currentCityWeather.id}/>;
       }
-      } else {
+    } else {
       if (searchFormStore.errorMessage) {
         if (this._redirect) {
-          return (<Redirect push={true} to={'/NotFound/'}/>);
+          return <Redirect push={true} to={'/NotFound/'}/>;
         }
       }
-    }
-
-    if (searchFormStore.favoriteData !== undefined) {
-      let cityItem: SettingsItemTypes = {
-        name: searchFormStore.favoriteData.name,
-        country: searchFormStore.favoriteData.country,
-        id: searchFormStore.favoriteData.id
-      };
-      appStore.addCity = cityItem;
     }
 
     return (
@@ -66,8 +88,11 @@ export class SearchForm extends React.Component {
           onSubmit={this.submitForm}
         >
           <InputField
-            value={this._inputText}
-            onChange={action((value: string) => this._inputText = value)}
+            classNames={this._className}
+            value={this._inputTextValue}
+
+            placeholder={this._placeholder}
+            onChange={action((value: string) => this._inputTextValue = value)}
           />
           <div className="search-form__form__control-panel">
             <button
@@ -79,7 +104,7 @@ export class SearchForm extends React.Component {
             <button
               className="search-form__form__control-panel__submit-btn"
               onClick={() => {
-                this.addCity();
+                this.addCityToFavorite();
                 this.clearInput();
               }}
             >
@@ -92,6 +117,6 @@ export class SearchForm extends React.Component {
   }
 
   private clearInput() {
-    this._inputText = '';
+    this._inputTextValue = '';
   }
 }
